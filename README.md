@@ -1,3 +1,5 @@
-# Insai PD one-pager
+# Insai one-pagers
 
-Static shareable page. Live: https://insai.github.io/pd-onepager/
+Static shareable pages.
+
+- Parkinson's: https://insai.github.io/onepager/parkinsons/
