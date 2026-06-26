@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insai · Brain + body, measured directly</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/style.css">
+<style>
+  :root{
+    --bg:#FFFFFF;--bg-tint:#F1F5F9;--surface:#FFFFFF;
+    --border:#DDE3E7;--border-subtle:#EAEEF1;--border-strong:#C6D0D8;
+    --text-primary:#0B1220;--text-secondary:#475467;--text-tertiary:#8C98A4;
+    --accent:#0D9488;--accent-deep:#064E48;--accent-soft:#ECFDF8;--accent-mid:#5EEAD4;
+    --body-c:#1E5A8A;--body-soft:#EAF2F9;--body-mid:#9DC3E0;
+    --gold:#92692B;--gold-soft:#FBF3E3;--gold-mid:#E4CB9A;
+    --shadow-sm:0 1px 2px rgba(11,18,32,.04);--shadow-md:0 4px 16px rgba(11,18,32,.05),0 1px 2px rgba(11,18,32,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text-primary);font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","ss02","cv11";font-variant-numeric:tabular-nums}
+  body{padding:36px 32px}
+  .page{max-width:980px;margin:0 auto}
+  sup{font-family:'Geist Mono',monospace;font-size:9px;color:var(--accent);font-weight:700;vertical-align:super;line-height:0}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--border-subtle);font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px}
+  .brand{display:inline-flex;align-items:center;gap:10px;color:var(--text-primary);font-weight:500;font-size:13px;text-transform:none}
+  .brand-mark{width:22px;height:22px;border-radius:5px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:12px}
+
+  .hero{padding:48px 0 30px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-90px;right:-160px;width:500px;height:500px;background:radial-gradient(circle,var(--accent-soft) 0%,transparent 65%);pointer-events:none}
+  .hero-inner{position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono',monospace;font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.8px;font-weight:500;margin-bottom:22px}
+  .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .hero h1{font-size:42px;font-weight:600;letter-spacing:-.03em;line-height:1.08;margin-bottom:20px;max-width:780px;text-wrap:balance}
+  .hero h1 .accent{color:var(--accent)}
+  .hero-sub{font-size:16.5px;line-height:1.6;color:var(--text-secondary);max-width:740px}
+  .hero-sub strong{color:var(--text-primary);font-weight:600}
+  .hero-meta{display:flex;gap:48px;margin-top:28px;padding-top:22px;border-top:1px solid var(--border-subtle)}
+  .hero-meta .label{font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px}
+  .hero-meta .value{font-size:13.5px;color:var(--text-primary);font-weight:500;margin-top:5px}
+
+  section.block{padding:40px 0;border-top:1px solid var(--border-subtle)}
+  .sh{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .snum{font-family:'Geist Mono',monospace;font-size:11px;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:5px;padding:3px 7px 2px}
+  h2{font-size:25px;font-weight:600;letter-spacing:-.022em;color:var(--text-primary);line-height:1.18;text-wrap:balance}
+  .lead{color:var(--text-secondary);font-size:14.5px;line-height:1.6;margin-bottom:24px;max-width:740px}
+  .lead strong{color:var(--text-primary);font-weight:600}
+
+  /* SYSTEM (blended brain + body) */
+  .sys{border:1px solid var(--border);border-radius:14px;padding:22px 28px 20px;box-shadow:var(--shadow-md);background:#fff;margin-bottom:16px}
+  .bodymap{margin:0 auto;max-width:660px}
+  .bodymap svg{width:100%;height:auto;display:block}
+  .sys-imgs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:22px}
+  .sys-cell{display:flex;flex-direction:column;align-items:stretch;text-align:left;gap:9px;min-width:0}
+  .sys-cell .img{aspect-ratio:3/2;width:100%;display:flex;align-items:center;justify-content:center;background:var(--bg-tint);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden}
+  .sys-cell .img img{width:100%;height:100%;object-fit:contain;padding:12px}
+  .sys-cell .img.photo img{object-fit:cover;padding:0}
+  .sys-tag{align-self:flex-start;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;padding:3px 10px;border-radius:4px}
+  .sys-tag.brain{background:var(--accent-soft);color:var(--accent-deep);border:1px solid var(--accent-mid)}
+  .sys-tag.body{background:var(--body-soft);color:var(--body-c);border:1px solid var(--body-mid)}
+  .sys-nm{font-size:13px;color:var(--text-secondary);text-align:left;line-height:1.45;max-width:none}
+  .sys-nm b{color:var(--text-primary);font-weight:600}
+  .sys-vs{font-size:11.5px;color:var(--text-tertiary);font-style:italic;line-height:1.45}
+  .bblist{display:flex;flex-wrap:wrap;gap:6px;margin-top:3px}
+  .bbtag{font-family:'Geist Mono',monospace;font-size:9.5px;color:var(--text-secondary);background:var(--bg-tint);border:1px solid var(--border-subtle);border-radius:4px;padding:3px 7px;letter-spacing:.2px;white-space:nowrap}
+  .sys-plus{font-size:30px;font-weight:200;color:var(--text-tertiary)}
+  .sys-cap{margin-top:20px;padding-top:18px;border-top:1px solid var(--border-subtle);font-size:14px;line-height:1.55;color:var(--text-secondary);text-align:center;text-wrap:balance}
+  .sys-cap strong{color:var(--text-primary);font-weight:600}
+  .screen-cap{font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;text-align:center;margin:4px 0 6px}
+  .screen{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-md)}
+  .chrome{display:flex;align-items:center;gap:6px;padding:9px 14px;background:var(--bg-tint);border-bottom:1px solid var(--border-subtle)}
+  .chrome .dot{width:9px;height:9px;border-radius:50%}
+  .chrome .dot:nth-child(1){background:#E55353;opacity:.55}.chrome .dot:nth-child(2){background:#E09F3E;opacity:.55}.chrome .dot:nth-child(3){background:#3ECF71;opacity:.55}
+  .chrome .tab{margin-left:12px;background:var(--surface);border:1px solid var(--border-subtle);border-radius:5px;padding:3px 12px;font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary)}
+  .screen img{width:100%;height:auto;display:block}
+
+  /* DEVICE + PORTAL SHOWCASE (light) — top of the unified platform card */
+  .showcase{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:30px;align-items:center;background:#fff;border:1px solid var(--border);border-bottom:none;border-radius:18px 18px 0 0;padding:34px 32px;margin-bottom:0;box-shadow:0 14px 40px rgba(11,18,32,.07)}
+  .sc-devices{display:flex;flex-direction:column;gap:28px;align-items:center}
+  .sc-dev{display:flex;flex-direction:column;align-items:center;gap:12px}
+  /* both devices bounded to the same 250px box → equal footprint regardless of shape */
+  .sc-dev img{object-fit:contain;filter:drop-shadow(0 20px 24px rgba(11,18,32,.24))}
+  .sc-dev img.head{width:250px;height:auto;filter:brightness(.78) contrast(1.14) drop-shadow(0 18px 22px rgba(11,18,32,.22))}
+  .sc-dev img.sleeve{height:250px;width:auto}
+  .sc-dev .lbl{font-family:'Geist Mono',monospace;font-size:9.5px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px}
+  .sc-screen{border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-md)}
+  .sc-screen img{display:block;width:100%;height:auto}
+
+  /* APPLICATION PILLARS */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pillar{border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:12px;padding:22px 22px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sm);background:#fff}
+  .pillar.reco{border-top-color:var(--accent)}
+  .pillar.longev{border-top-color:var(--gold)}
+  .pillar.perf{border-top-color:var(--body-c)}
+  .p-eye{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+  .pillar.perf .p-eye{color:var(--body-c)}.pillar.reco .p-eye{color:var(--accent)}.pillar.longev .p-eye{color:var(--gold)}
+  .p-h{font-size:16.5px;font-weight:600;color:var(--text-primary);line-height:1.25;letter-spacing:-.01em;text-wrap:balance}
+  .p-b{font-size:12.5px;color:var(--text-secondary);line-height:1.55}
+  .p-b strong{color:var(--text-primary);font-weight:600}
+  .p-proof{margin-top:auto;padding-top:11px;border-top:1px solid var(--border-subtle);font-size:11px;color:var(--text-secondary);line-height:1.45}
+  .p-proof b{color:var(--text-primary);font-weight:600}
+
+  /* GTM DOORS (co-equal) */
+  .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .door{--c:var(--accent);border:1px solid var(--border);border-top:3px solid var(--c);border-radius:12px;padding:22px 22px;display:flex;flex-direction:column;gap:9px;box-shadow:var(--shadow-sm);background:#fff;overflow:hidden}
+  .door.perf{--c:var(--body-c)}.door.longev{--c:var(--gold)}
+  .door-img{position:relative;height:158px;margin:-22px -22px 10px;overflow:hidden}
+  .door-img img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;filter:grayscale(1) contrast(1.05) brightness(1.03)}
+  .door.longev .door-img img{object-position:center 42%}
+  .door-img::after{content:'';position:absolute;inset:0;background:var(--c);mix-blend-mode:color;opacity:.85}
+  .door-img::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,18,32,.14) 0%,rgba(11,18,32,0) 40%,rgba(11,18,32,.10) 100%)}
+  .door-eye{font-family:'Geist Mono',monospace;font-size:10px;color:var(--c);text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+  .door-h{font-size:16px;font-weight:600;color:var(--text-primary);line-height:1.25;letter-spacing:-.01em}
+  .door-b{font-size:12.5px;color:var(--text-secondary);line-height:1.55}
+  .door-b strong{color:var(--text-primary);font-weight:600}
+  .door-m{margin-top:auto;padding-top:11px;border-top:1px solid var(--border-subtle);font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.4px}
+
+  /* PLATFORM CAPS — bottom strip of the unified platform card, flush with the showcase */
+  .caps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:0;background:#fff;border:1px solid var(--border);border-top:1px solid var(--border-subtle);border-radius:0 0 18px 18px;box-shadow:0 14px 40px rgba(11,18,32,.07);overflow:hidden}
+  .cap{border:none;border-left:1px solid var(--border-subtle);border-radius:0;padding:20px 22px;background:#fff;box-shadow:none;display:flex;flex-direction:column;gap:8px}
+  .cap:first-child{border-left:none}
+  .cap-status{align-self:flex-start;font-family:'Geist Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px 2px;border-radius:4px;white-space:nowrap}
+  .cap-status.live{background:var(--accent-soft);color:var(--accent-deep);border:1px solid var(--accent-mid)}
+  .cap-status.dev{background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold-mid)}
+  .cap-h{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-.01em}
+  .cap-b{font-size:12.5px;color:var(--text-secondary);line-height:1.5}
+  .cap-b strong{color:var(--text-primary);font-weight:600}
+  .integrate{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:12.5px;color:var(--text-secondary);line-height:1.45}
+  /* PLATFORM PIPELINE */
+  .lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  .lane{--c2:var(--accent);border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:#fff;box-shadow:var(--shadow-sm)}
+  .lane.dev{--c2:var(--gold)}
+  .lane.future{--c2:var(--text-tertiary)}
+  .lane-items{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:9px}
+  .lane-items li{font-size:12px;color:var(--text-secondary);line-height:1.4;padding-left:14px;position:relative}
+  .lane-items li::before{content:'';position:absolute;left:0;top:6px;width:5px;height:5px;border-radius:50%;background:var(--c2)}
+  .cap-status.future{background:var(--bg-tint);color:var(--text-tertiary);border:1px solid var(--border-strong)}
+  /* RESEARCH BANNER */
+  .research-banner{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:18px;background:var(--text-primary);border-radius:14px;padding:17px 22px;text-decoration:none;box-shadow:var(--shadow-md)}
+  .research-banner .rb-h{color:#fff;font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+  .research-banner .rb-sub{font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.6px}
+  .research-banner .rb-arrow{flex:none;width:38px;height:38px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px}
+
+  /* CTA */
+  .cta{margin-top:36px;background:linear-gradient(135deg,var(--accent-soft) 0%,#FFFFFF 72%);border:1px solid var(--accent-mid);border-radius:16px;padding:32px 34px;box-shadow:var(--shadow-md)}
+  .cta-h{font-size:25px;font-weight:600;letter-spacing:-.022em;line-height:1.18;color:var(--text-primary);margin-bottom:11px;max-width:620px;text-wrap:balance}
+  .cta-h span{color:var(--accent-deep)}
+  .cta-sub{font-size:14.5px;line-height:1.55;color:var(--text-secondary);max-width:720px}
+  .cta-sub strong{color:var(--text-primary);font-weight:600}
+  .cta-meta{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--accent-mid);flex-wrap:wrap}
+  .cta-proof{font-size:11.5px;line-height:1.5;color:var(--text-tertiary);max-width:560px}
+  .cta-proof strong{color:var(--text-secondary);font-weight:600}
+  .cta-btn{background:var(--accent);color:#fff;padding:13px 22px;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:var(--shadow-sm)}
+
+  .foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px}
+  .foot a{color:var(--accent);text-decoration:none}
+  .src{font-size:9.5px;color:var(--text-tertiary);line-height:1.5;margin-top:12px;font-style:italic}
+
+  @media (max-width:880px){
+    .hero h1{font-size:31px}.hero-meta{flex-direction:column;gap:14px}
+    .pillars,.doors,.caps,.lanes,.showcase{grid-template-columns:1fr}
+    .cap{border-left:none;border-top:1px solid var(--border-subtle)}.cap:first-child{border-top:none}
+    .sys-imgs{grid-template-columns:1fr;gap:18px}.sys-plus{transform:rotate(90deg)}
+  }
+  @media print{body{padding:0}.block,.sys,.pillar,.door,.screen,.cta{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark">In</span><span>Insai</span></div>
+      <span>Brain + body biosensing · 2026</span>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">The missing layer in fitness &amp; longevity</div>
+        <h1>The brain and the body, <span class="accent">holistically measured.</span></h1>
+        <p class="hero-sub">Your ring and your watch track heart rate and movement. Neither can reach the brain or the muscle. Insai measures both at clinical grade — the signals behind how you <strong>recover, perform, stay sharp, and age</strong> — and connects them to the wearables you already wear.</p>
+        <div class="hero-meta">
+          <div><div class="label">We add</div><div class="value">Brain (EEG) + Muscle (EMG), clinical-grade</div></div>
+          <div><div class="label">We connect</div><div class="value">Oura, Whoop &amp; the wearables you use</div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01 SYSTEM -->
+    <section class="block">
+      <div class="sh"><span class="snum">01</span><h2>The missing layer: brain and muscle.</h2></div>
+      <p class="lead">Your wearables read pulse and motion. The brain and the muscle take a clinic. Insai brings those two signals out of the lab and into the stack you already use — measured directly, not estimated from the wrist.</p>
+      <div class="sys">
+        <div class="sys-imgs">
+          <div class="sys-cell">
+            <div class="img photo"><img src="assets/sports-headband-sleep-web.jpg" alt="Athlete asleep wearing the Insai EEG headband"></div>
+            <span class="sys-tag brain">Brain · EEG</span>
+            <div class="sys-nm"><b>We measure the brain directly</b>, and sleep is the clearest window into it. Its recovery, restoration and aging show up most cleanly overnight — so that's where we start, though the signal isn't limited to the night. That's the difference between guessing at the brain and actually reading it.</div>
+            <div class="bblist"><span class="bbtag">Deep-sleep &amp; restoration</span><span class="bbtag">Recovery readiness</span><span class="bbtag">Cognitive health</span><span class="bbtag">Brain-age trends</span></div>
+            <div class="sys-vs">The brain a wrist can't see at all.</div>
+          </div>
+          <div class="sys-cell">
+            <div class="img photo"><img src="assets/sports-sleeve-active-web.jpg" alt="Athlete wearing the Insai EMG sleeve during a return-to-play session"></div>
+            <span class="sys-tag body">Body · EMG</span>
+            <div class="sys-nm"><b>We measure the muscles directly</b>: their own electrical signal as they fire. How well a muscle activates, its timing, and left-right balance under load — the difference between a muscle that looks ready and one that actually is, for peak performance and recovery alike.</div>
+            <div class="bblist"><span class="bbtag">Peak performance</span><span class="bbtag">Injury recovery</span><span class="bbtag">Rehab progress</span><span class="bbtag">Muscle activation</span><span class="bbtag">Strength as you age</span></div>
+            <div class="sys-vs">The signal a force plate is blind to.</div>
+          </div>
+        </div>
+        <p class="sys-cap">On their own, two signals nothing else captures.<sup>1</sup> Combined with the data you already track, they complete the picture — <strong>and the platform turns that into a decision.</strong></p>
+      </div>
+    </section>
+
+    <!-- 02 PLATFORM -->
+    <section class="block">
+      <div class="sh"><span class="snum">02</span><h2>Clinical-grade signals. One holistic physiology.</h2></div>
+      <p class="lead">Rings and wrists capture a lot — heart, movement, and more. What they can't see is the brain and the muscle. Insai measures those two signals at clinical grade and folds them in with the data a client already tracks, into one physiological view. That's the platform.</p>
+      <div class="showcase">
+        <div class="sc-devices">
+          <div class="sc-dev"><img class="head" src="assets/nexus-headband-cut-web.png" alt="Insai Nexus EEG headband"><span class="lbl">Nexus · EEG headband</span></div>
+          <div class="sc-dev"><img class="sleeve" src="assets/paragit-sleeve-cut-web.png" alt="Insai EMG sleeve"><span class="lbl">EMG sleeve</span></div>
+        </div>
+        <div class="sc-screen">
+          <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="tab">insai.tech · nexus portal</div></div>
+          <img src="assets/nexus-portal-drivers-web.png" alt="Nexus portal — cognitive aging, sleep quality and recovery drivers">
+        </div>
+      </div>
+      <div class="caps">
+        <div class="cap">
+          <div class="cap-h">The missing ingredients, at clinical grade</div>
+          <p class="cap-b">The wrist and the ring already do a lot well. They're just blind to two things: the brain and the muscle. Insai adds both directly, at clinical grade, with EEG and EMG — the only reason sleep can be staged at expert level<sup>4</sup>, and muscle activation seen at all.</p>
+        </div>
+        <div class="cap">
+          <div class="cap-h">One holistic physiology</div>
+          <p class="cap-b">Oura and Whoop read cardiovascular and activity signals well. We built brain and muscle monitoring for what they can't reach, and fuse all of it into one picture. No single wearable has everything; <strong>Insai is the layer that holds them together.</strong></p>
+        </div>
+        <div class="cap">
+          <div class="cap-h">Analysis that closes the loop</div>
+          <p class="cap-b">That picture becomes decision-grade analysis for the jobs that matter most: <strong>recovery and readiness, injury rehab, sleep and cognitive health, healthy aging.</strong> Measurement a coach can act on and check again later, not a self-reported guess.</p>
+        </div>
+      </div>
+      <p class="integrate"><span class="cap-status live">Status</span> Live today: clinical-grade sleep staging and muscle activation. In build: cross-signal baselines and the automated coach brief.</p>
+      <a class="research-banner" href="https://insai.github.io/biomarker-portal/research/">
+        <div class="rb-text">
+          <div class="rb-h">See the full biomarker validation, methods &amp; references</div>
+          <div class="rb-sub">Nexus Research Hub · insai.github.io/biomarker-portal/research</div>
+        </div>
+        <span class="rb-arrow">→</span>
+      </a>
+    </section>
+
+    <!-- 03 MARKETS -->
+    <section class="block">
+      <div class="sh"><span class="snum">03</span><h2>Where it goes to work.</h2></div>
+      <p class="lead">The same picture, aimed at the job each buyer is already trying to do, reached through the channels they already trust.</p>
+      <div class="doors">
+        <div class="door perf">
+          <div class="door-img"><img src="assets/ctx-sports-web.jpg" alt=""></div>
+          <div class="door-eye">Elite sports</div>
+          <div class="door-h">Return-to-play that holds.</div>
+          <p class="door-b">Force tests clear an athlete while the muscle is still firing wrong — the activation deficit behind the 1-in-5 re-injury rate. We catch it directly, next to true sleep recovery, for the staff who already test.<sup>2,3</sup></p>
+          <div class="door-m">Teams · performance &amp; medical staff</div>
+        </div>
+        <div class="door">
+          <div class="door-img"><img src="assets/ctx-coaching-web.jpg" alt=""></div>
+          <div class="door-eye">Coaching platforms</div>
+          <div class="door-h">Recovery you can prove.</div>
+          <p class="door-b">Coaches prescribe recovery on a client's say-so. We hand them a measured, clinical-grade recovery read — brain and muscle, fused with the wrist data the client already wears — so remote coaching closes on evidence. First partner: <strong>Lenus Health</strong>.</p>
+          <div class="door-m">Channel · Lenus Health</div>
+        </div>
+        <div class="door longev">
+          <div class="door-img"><img src="assets/ctx-longevity-sleep-web.jpg" alt=""></div>
+          <div class="door-eye">Longevity clinics</div>
+          <div class="door-h">Healthspan a blood panel can't reach.</div>
+          <p class="door-b">Sleep architecture and neuromuscular function are among the most robust predictors of how you age — exactly what bloods, glucose and rings miss. Measured directly, next to the panel a clinic already runs.<sup>5,6</sup></p>
+          <div class="door-m">~$23–28B · ~10%/yr</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta">
+      <div class="cta-h">The brain and the body, <span>holistically measured.</span></div>
+      <p class="cta-sub">Start where the gap is sharpest: a pilot running our EMG through a return-to-play protocol, head to head with the force-plate standard. Prove we catch the deficit the test misses. Then the recovery and longevity doors open on evidence, not a pitch.</p>
+      <div class="cta-meta">
+        <div class="cta-proof"><strong>Insai today:</strong> clinical-grade EEG and EMG analytics — validated against clinical standards, in active development across sleep, recovery and rehabilitation.</div>
+        <a class="cta-btn" href="mailto:mark@insai.tech">Talk to Insai →</a>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>Insai · <a href="https://insai.tech">insai.tech</a> · Mark Yousef</span>
+      <span>Performance · Recovery · Longevity · 2026</span>
+    </div>
+    <p class="src">Sources: 1 sEMG reads muscle activation, timing and coordination that PPG and accelerometers cannot; wrist sleep estimates are individually unreliable (Frontiers Syst Neurosci 2022; Chinoy et al., Sleep 2021). 2 Quadriceps activation deficits persist after strength normalizes and return-to-sport (Lisee meta 2019; Schilaty 2023). 3 Passing the return-to-play battery is not associated with lower re-injury (Webster &amp; Hewett, JOSPT 2019). 4 Wearable dry-EEG sleep staging κ≈0.76 vs polysomnography = human inter-scorer agreement (Lanthier, SLEEP Advances 2025; Lee, JCSM 2022). 5 Sleep regularity out-predicts duration for all-cause mortality (Windred et al., Sleep 2024, UK Biobank N=60,977). 6 Grip strength → all-cause mortality (Leong, Lancet/PURE 2015, N≈140k); sarcopenia redefined strength-first (EWGSOP2 2019).</p>
+
+  </div>
+</body>
+</html>
