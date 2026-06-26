@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insai · Measurement for Parkinson's</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 11mm; }
+:root {
+  --bg: #FFFFFF;
+  --surface: #F8FAFB;
+  --surface-deep: #EFF4F6;
+  --border: #DDE3E7;
+  --border-soft: #EAEEF1;
+  --text-primary: #0B1220;
+  --text-secondary: #475467;
+  --text-tertiary: #8C98A4;
+  --accent: #0D9488;
+  --accent-soft: #ECFDF8;
+  --accent-mid: #5EEAD4;
+  --accent-deep: #064E48;
+  --slate: #64748B;
+  --muted-bg: #F1F5F9;
+  --warn: #B45309;
+  --warn-soft: #FEF3E2;
+  --warn-mid: #F5D9A3;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg); color: var(--text-primary);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 13px; line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+.page { max-width: 856px; margin: 0 auto; padding: 40px 40px 44px; }
+
+/* SUPERSCRIPT CITATIONS */
+sup {
+  font-family: 'Geist Mono', monospace;
+  font-size: 8.5px;
+  color: var(--accent);
+  font-weight: 700;
+  vertical-align: super;
+  line-height: 0;
+  padding: 0 1px 0 1px;
+}
+
+.brand-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  margin-bottom: 34px;
+}
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand-mark {
+  width: 30px; height: 30px;
+  background: var(--accent); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 15px;
+  font-family: 'Geist Mono', monospace; letter-spacing: -0.5px;
+}
+.brand-name { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.brand-tag {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.hero { margin-bottom: 46px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.16em;
+  font-weight: 700; margin-bottom: 18px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 14px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: 38px; font-weight: 600; letter-spacing: -0.03em;
+  line-height: 1.06; margin-bottom: 16px; max-width: 760px;
+  text-wrap: balance;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero p {
+  font-size: 15px; color: var(--text-secondary); line-height: 1.6;
+  max-width: 600px;
+}
+.hero-audience {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px;
+}
+.aud-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11.5px; font-weight: 500; color: var(--text-primary);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 999px; padding: 6px 13px 6px 11px; line-height: 1.2;
+  white-space: nowrap;
+}
+.aud-tag::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+
+.section { margin-bottom: 44px; }
+.section-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em;
+  font-weight: 700; margin-bottom: 11px;
+}
+.section-num {
+  font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 700;
+  color: var(--accent-deep); letter-spacing: 0.04em;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-mid);
+  border-radius: 5px; padding: 2px 6px 1px;
+  flex-shrink: 0;
+}
+.section-eyebrow::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--border-soft), transparent);
+}
+.section-h {
+  font-size: 23px; font-weight: 600; letter-spacing: -0.022em;
+  color: var(--text-primary); line-height: 1.18; margin-bottom: 7px;
+  text-wrap: balance;
+}
+.section-sub {
+  font-size: 13.5px; color: var(--text-secondary); line-height: 1.55;
+  margin-bottom: 22px; max-width: 660px;
+}
+
+/* PROBLEM */
+.problem-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.prob {
+  padding: 18px 20px 20px;
+  background: var(--bg); border-radius: 10px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--warn);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.prob-h {
+  font-size: 14px; font-weight: 600; color: var(--text-primary);
+  letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 8px;
+}
+.prob-h::before {
+  content: ''; width: 7px; height: 7px; border-radius: 2px;
+  background: var(--warn); flex-shrink: 0;
+}
+.prob-body {
+  font-size: 11.5px; color: var(--text-secondary); line-height: 1.6;
+}
+.prob-body strong { color: var(--text-primary); font-weight: 600; }
+.prob-stat {
+  margin-top: auto; padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
+}
+.prob-stat-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 22px; font-weight: 700;
+  color: var(--warn); line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.prob-stat-label {
+  font-family: 'Geist Mono', monospace; font-size: 9.5px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em;
+  margin-top: 4px; font-weight: 600; line-height: 1.4;
+}
+
+/* SOLUTION */
+.solution-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+}
+.sol {
+  padding: 18px 20px 20px;
+  background: var(--accent-soft); border-radius: 10px;
+  border: 1px solid var(--accent-mid);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.sol-visual {
+  height: 122px;
+  display: flex; align-items: center; justify-content: center;
+  background: white; border-radius: 6px;
+  border: 1px solid var(--accent-mid);
+  color: var(--accent-deep);
+  margin-bottom: 4px;
+}
+.sol-visual svg { max-height: 44px; }
+.sol-visual img { max-height: 78px; max-width: 100%; object-fit: contain; }
+.sol-visual.sol-screenshot {
+  padding: 0; overflow: hidden; position: relative;
+  background: #0B1220; border-color: var(--accent-deep);
+}
+.sol-screenshot img {
+  width: 100%; height: 100%; max-height: none;
+  object-fit: cover; object-position: 50% 12%;
+}
+.sol-screenshot .shot-caption {
+  position: absolute; right: 8px; bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(11,18,32,0.78);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  color: #fff; padding: 3px 8px; border-radius: 5px;
+  font-family: 'Geist Mono', monospace; font-size: 8px;
+  text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+}
+.sol-screenshot .shot-caption .dot {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--accent-mid);
+}
+
+/* SOLUTION LIFESTYLE BANNER */
+.solution-banner {
+  display: grid; grid-template-columns: 1.7fr 1fr;
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+  min-height: 300px;
+}
+.banner-media { position: relative; min-height: 300px; }
+.banner-media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 36%;
+  display: block;
+}
+.banner-panel {
+  background: var(--accent-soft);
+  border-left: 1px solid var(--accent-mid);
+  padding: 28px;
+  display: flex; flex-direction: column; justify-content: center; gap: 14px;
+}
+.bp-eyebrow {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--accent-deep); text-transform: uppercase; letter-spacing: 0.14em;
+  font-weight: 700;
+}
+.bp-title {
+  font-size: 17px; font-weight: 600; color: var(--text-primary);
+  line-height: 1.32; letter-spacing: -0.012em; text-wrap: balance;
+}
+.bp-tag {
+  margin-top: 2px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Geist Mono', monospace; font-size: 9.5px;
+  color: var(--accent-deep); text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 700;
+}
+.bp-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+/* day/night diptych */
+.solution-banner.duo {
+  grid-template-columns: 1fr 1fr; gap: 6px;
+  border: none; border-radius: 0; overflow: visible;
+  min-height: 0; margin-bottom: 10px;
+}
+.banner-shot {
+  position: relative; margin: 0;
+  min-height: 252px; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.banner-shot img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.banner-shot figcaption {
+  position: absolute; left: 10px; bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(11,18,32,0.78);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  color: #fff; padding: 4px 9px; border-radius: 5px;
+  font-family: 'Geist Mono', monospace; font-size: 8.5px;
+  text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+}
+.banner-shot figcaption .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-mid); flex-shrink: 0; }
+.banner-cap {
+  margin: 0 0 20px;
+  font-size: 12.5px; color: var(--text-secondary); line-height: 1.55;
+  display: flex; align-items: center; gap: 8px;
+}
+.banner-cap::before { content: ''; width: 14px; height: 1.5px; background: var(--accent); flex-shrink: 0; }
+.banner-cap strong { color: var(--text-primary); font-weight: 600; }
+.sol-devices {
+  display: flex; gap: 4px;
+  padding: 6px;
+}
+.device-slot {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border-radius: 4px;
+  padding: 4px;
+  min-width: 0;
+}
+.device-slot svg { max-height: 36px; }
+.device-slot img { max-height: 76px; max-width: 100%; object-fit: contain; }
+.device-label {
+  font-family: 'Geist Mono', monospace; font-size: 7.5px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em;
+  font-weight: 600; line-height: 1.2; text-align: center;
+}
+.sol-eyebrow {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--accent-deep); text-transform: uppercase; letter-spacing: 0.13em;
+  font-weight: 700;
+}
+.sol-h {
+  font-size: 14.5px; font-weight: 600; color: var(--text-primary);
+  line-height: 1.25; letter-spacing: -0.01em;
+}
+.sol-body {
+  font-size: 11.5px; color: var(--text-secondary); line-height: 1.6;
+  flex-grow: 1;
+}
+.sol-body strong { color: var(--text-primary); font-weight: 600; }
+.sol-foot {
+  margin-top: auto; padding-top: 10px;
+  border-top: 1px solid var(--accent-mid);
+  font-family: 'Geist Mono', monospace; font-size: 10.5px;
+  color: var(--accent-deep); font-weight: 700;
+}
+.sol-foot small {
+  display: block; font-family: 'Geist Mono', monospace;
+  font-size: 9px; color: var(--text-tertiary);
+  text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+  margin-top: 3px;
+}
+
+/* VALIDATION PROOF BAND */
+.proofs-head {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Geist Mono', monospace; font-size: 9.5px;
+  color: var(--accent-deep); text-transform: uppercase; letter-spacing: 0.14em;
+  font-weight: 700; margin: 26px 0 12px;
+}
+.proofs-head::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.proofs-head::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--accent-mid), transparent);
+}
+.proofs {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+.proof-tile {
+  background: var(--accent-soft); border: 1px solid var(--accent-mid);
+  border-radius: 10px; padding: 15px 15px 14px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.proof-num {
+  font-family: 'Geist Mono', monospace; font-size: 19px; font-weight: 700;
+  color: var(--accent-deep); letter-spacing: -0.02em; line-height: 1.05;
+}
+.proof-num small {
+  font-size: 10px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.02em; text-transform: uppercase;
+}
+.proof-label {
+  font-size: 10.5px; color: var(--text-secondary); line-height: 1.45; flex-grow: 1;
+}
+.proof-label strong { color: var(--text-primary); font-weight: 600; }
+.proof-tag {
+  margin-top: auto; padding-top: 9px; border-top: 1px solid var(--accent-mid);
+  font-family: 'Geist Mono', monospace; font-size: 8px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-deep);
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.proof-tag::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+/* analytics-card inline research link */
+.sol-link {
+  color: var(--accent-deep); font-weight: 600; text-decoration: none;
+  border-bottom: 1px solid var(--accent-mid); white-space: nowrap;
+}
+.sol-link:hover { border-bottom-color: var(--accent-deep); }
+
+/* CATALOGUE PREVIEW · 31 biomarkers */
+.cat {
+  margin-top: 18px;
+  border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px 22px 18px;
+  background: white;
+}
+.cat-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 16px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.cat-title {
+  font-size: 14px; font-weight: 600; color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.cat-caption {
+  font-size: 10px; color: var(--text-tertiary); line-height: 1.5;
+  margin: -4px 0 14px;
+}
+.cat-caption strong { color: var(--text-secondary); font-weight: 600; }
+.cat-link {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 700; text-decoration: none;
+}
+.cat-link:hover { text-decoration: underline; }
+.cat-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+  align-items: start;
+  border-top: 1px solid var(--border-soft);
+}
+.cat-row:first-of-type { border-top: none; padding-top: 4px; }
+.cat-group {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.cat-group-name {
+  font-size: 11.5px; font-weight: 600; color: var(--text-primary);
+  letter-spacing: -0.005em;
+}
+.cat-group-meta {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.cat-chips {
+  display: flex; flex-wrap: wrap; gap: 4px;
+}
+.cat-legend {
+  display: flex; gap: 6px; align-items: center;
+  margin-bottom: 14px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.cat-legend-label {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.12em;
+  font-weight: 700; margin-right: 6px;
+}
+.cat-legend .cat-chip { font-size: 9.5px; }
+.cat-chip {
+  font-size: 10px; color: var(--accent-deep);
+  background: var(--accent-soft); border: 1px solid var(--accent-mid);
+  padding: 3px 7px; border-radius: 4px; line-height: 1.3;
+  font-weight: 500;
+}
+.cat-chip.partial {
+  color: var(--warn);
+  background: var(--warn-soft);
+  border: 1px solid var(--warn-mid);
+  font-weight: 500;
+}
+.cat-chip.none {
+  color: var(--text-tertiary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-weight: 400;
+}
+.cat-chip.live {
+  color: #fff;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  font-weight: 600;
+}
+.cat-chip.live sup { color: rgba(255,255,255,0.88); }
+.cat-chip sup {
+  font-size: 7.5px;
+  color: inherit;
+  font-weight: 700;
+  padding-left: 1px;
+}
+.cat-coverage {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 4px;
+}
+.cat-coverage .full { color: var(--accent-deep); }
+.cat-coverage .partial { color: var(--warn); }
+.cat-coverage .sep {
+  color: var(--text-tertiary);
+  font-weight: 400;
+  margin: 0 3px;
+}
+.cat-coverage small {
+  display: block;
+  font-family: 'Geist Mono', monospace;
+  font-size: 8.5px; font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-top: 1px;
+}
+.cov-meter {
+  display: flex; gap: 2px; height: 5px;
+  margin-top: 9px; width: 100%; max-width: 168px;
+}
+.cov-meter span { display: block; border-radius: 1.5px; }
+.cov-meter .seg-full { background: var(--accent); }
+.cov-meter .seg-partial { background: var(--warn); opacity: 0.85; }
+.cov-meter .seg-none { background: var(--surface-deep); border: 1px solid var(--border-soft); }
+.cov-meter .seg-live { background: var(--accent); }
+.cov-meter .seg-next { background: var(--accent-soft); border: 1px solid var(--accent); }
+
+/* MDS-UPDRS · two-tier green chips */
+.cat-chip.next {
+  color: var(--accent-deep);
+  background: transparent;
+  border: 1px solid var(--accent);
+  font-weight: 600;
+}
+.cat-chip.next sup { color: var(--accent); font-weight: 700; }
+.cat-coverage .today { color: var(--accent-deep); }
+.cat-coverage .next { color: var(--accent); }
+.cat-foot {
+  margin-top: 14px; padding-top: 11px;
+  border-top: 1px solid var(--border-soft);
+  font-size: 9.5px; color: var(--text-tertiary); line-height: 1.55;
+}
+.cat-foot strong { color: var(--text-secondary); font-weight: 600; }
+.cat-foot sup { font-size: 8px; color: var(--accent); }
+
+/* BEYOND MDS-UPDRS · light footer inside the coverage table */
+.cat-beyond {
+  margin-top: 14px; padding-top: 13px;
+  border-top: 1px solid var(--accent-mid);
+  display: flex; gap: 11px; align-items: baseline;
+}
+.cat-beyond-tag {
+  flex-shrink: 0;
+  font-family: 'Geist Mono', monospace; font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--accent-deep); background: var(--accent-soft);
+  border: 1px solid var(--accent-mid); border-radius: 4px; padding: 3px 7px;
+}
+.cat-beyond-text { font-size: 11px; color: var(--text-secondary); line-height: 1.55; }
+.cat-beyond-text strong { color: var(--text-primary); font-weight: 600; }
+
+/* PROBLEM · invisible-between-visits visual */
+.gap-viz {
+  margin: 2px 0 24px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg); padding: 16px 20px 12px;
+}
+.gap-viz svg { width: 100%; height: auto; display: block; }
+.gap-viz-legend {
+  display: flex; flex-wrap: wrap; gap: 18px; margin-top: 4px;
+}
+.gap-key {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-tertiary); font-weight: 600;
+}
+.gap-key .swatch { width: 16px; height: 0; border-top-width: 2px; border-top-style: solid; }
+.gap-key .swatch.seen { border-top-color: var(--text-tertiary); border-top-style: dashed; }
+.gap-key .swatch.real { border-top-color: var(--warn); }
+
+/* SOLUTION · brain & body day-night banner viz */
+.banner-media.viz {
+  background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+}
+.banner-media.viz svg { width: 100%; height: 100%; display: block; }
+
+/* JOURNEY · bend-the-curve progression */
+.progression {
+  border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bg); padding: 18px 20px 12px; margin-bottom: 18px;
+}
+.progression svg { width: 100%; height: auto; display: block; }
+.progression-legend {
+  display: flex; flex-wrap: wrap; gap: 18px; margin-top: 6px;
+}
+.prog-key {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-tertiary); font-weight: 600;
+}
+.prog-key .swatch { width: 16px; height: 3px; border-radius: 2px; }
+.prog-key .swatch.untreated { background: var(--slate); }
+.prog-key .swatch.insai { background: var(--accent); }
+.prog-key .swatch.gap { height: 11px; background: var(--accent-soft); border: 1px solid var(--accent-mid); }
+.progression-note {
+  margin-top: 11px; padding-top: 10px;
+  border-top: 1px solid var(--border-soft);
+  font-size: 9px; color: var(--text-tertiary); line-height: 1.55;
+}
+.progression-note em { font-style: italic; color: var(--text-secondary); }
+/* journey phase + service boxes pinned under the curve */
+.journey-phases {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+  margin-top: 4px; margin-bottom: 14px;
+}
+.jp {
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 11px 9px 13px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+.jp.followup { border-top-color: var(--slate); }
+.jp-phase { font-size: 12.5px; font-weight: 600; color: var(--text-primary); line-height: 1.2; letter-spacing: -0.01em; }
+.jp-time { font-family: 'Geist Mono', monospace; font-size: 8px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-top: 2px; }
+.jp-div { width: 22px; height: 1px; background: var(--border); margin: 9px 0 8px; }
+.jp-tag { font-family: 'Geist Mono', monospace; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-deep); }
+.jp.followup .jp-tag { color: var(--slate); }
+.jp-svc { font-size: 11.5px; font-weight: 600; color: var(--text-primary); line-height: 1.25; margin-top: 3px; }
+.jp-aud { font-family: 'Geist Mono', monospace; font-size: 8px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; line-height: 1.3; margin-top: 3px; }
+
+/* CTA */
+.cta-row {
+  display: grid; grid-template-columns: 1fr; gap: 14px;
+  margin-top: 22px;
+}
+.cta {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; text-decoration: none; color: var(--text-primary);
+  transition: all 120ms ease;
+}
+.cta:hover { background: var(--accent-soft); border-color: var(--accent); }
+.cta-text { display: flex; flex-direction: column; gap: 3px; }
+.cta-title { font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
+.cta-sub {
+  font-family: 'Geist Mono', monospace; font-size: 9.5px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.cta-arrow {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; flex-shrink: 0;
+}
+.cta.cta-dark {
+  background: var(--text-primary); border-color: var(--text-primary);
+  color: #fff;
+}
+.cta.cta-dark .cta-title { color: #fff; }
+.cta.cta-dark .cta-sub { color: rgba(255,255,255,0.55); }
+.cta.cta-dark:hover { background: #05080F; border-color: var(--accent); }
+.cta.cta-dark .cta-arrow { background: var(--accent); color: #fff; }
+
+/* PAGE BREAK */
+.page-break {
+  page-break-before: always;
+  break-before: page;
+  padding-top: 16px;
+}
+.page-divider {
+  margin: 48px auto 0;
+  width: 60px; height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+}
+
+/* JOURNEY */
+.journey-rail {
+  position: relative;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 12px; margin-bottom: 16px;
+}
+.journey-rail::before {
+  content: ''; position: absolute; top: 12px;
+  left: 10%; right: 10%; height: 2px; border-radius: 1px;
+  background: var(--border);
+}
+.journey-rail::after {
+  content: ''; position: absolute; top: 12px;
+  left: 10%; width: 60%; height: 2px; border-radius: 1px;
+  background: var(--accent); opacity: 0.55;
+}
+.rail-node {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; text-align: center; position: relative;
+}
+.rail-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 700;
+  background: var(--accent); color: #fff;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--accent-mid);
+  position: relative; z-index: 1;
+}
+.rail-node.followup .rail-dot {
+  background: var(--slate);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--border);
+}
+.rail-time {
+  font-family: 'Geist Mono', monospace; font-size: 8.5px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em;
+  font-weight: 600; line-height: 1.4;
+}
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  align-items: stretch;
+}
+.journey-axis {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 14px;
+  font-family: 'Geist Mono', monospace; font-size: 8.5px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.12em;
+  font-weight: 600;
+}
+.journey-axis::before, .journey-axis::after {
+  content: ''; flex: 1; height: 1px; background: var(--border-soft);
+}
+.journey-axis span { padding: 0 12px; white-space: nowrap; }
+.phase {
+  background: white;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--text-tertiary);
+  border-radius: 8px;
+  padding: 14px 13px 15px;
+  display: flex; flex-direction: column;
+  gap: 11px;
+}
+.phase.lead { border-top-color: var(--accent); }
+.phase.followup { border-top-color: var(--slate); }
+.phase-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 8px;
+}
+.phase-letter {
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 700;
+  background: var(--surface-deep); color: var(--text-secondary);
+  border: 1px solid var(--border); flex-shrink: 0;
+}
+.phase.lead .phase-letter {
+  background: var(--accent); color: white; border-color: var(--accent);
+}
+.phase.followup .phase-letter {
+  background: var(--slate); color: white; border-color: var(--slate);
+}
+.phase-time {
+  font-family: 'Geist Mono', monospace; font-size: 8.5px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em;
+  text-align: right; line-height: 1.35; font-weight: 600;
+}
+.phase-name {
+  font-size: 12.5px; font-weight: 600; color: var(--text-primary);
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+.phase-section { display: flex; flex-direction: column; gap: 5px; }
+.phase-eyebrow {
+  font-family: 'Geist Mono', monospace; font-size: 8.5px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 600;
+}
+.phase-chips {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.phase-chip {
+  font-size: 10.5px; color: var(--text-secondary); line-height: 1.3;
+  position: relative; padding-left: 9px;
+}
+.phase-chip::before {
+  content: ''; position: absolute; left: 0; top: 7px;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--text-tertiary);
+}
+.phase.lead .phase-chip { color: var(--accent-deep); }
+.phase.lead .phase-chip::before { background: var(--accent); }
+.phase-evidence {
+  font-size: 10px; color: var(--text-secondary);
+  font-style: italic; line-height: 1.5;
+  padding: 6px 8px;
+  background: var(--surface);
+  border-left: 2px solid var(--accent-mid);
+  border-radius: 2px;
+}
+.phase.followup .phase-evidence { border-left-color: var(--slate); }
+.phase-service {
+  margin-top: auto; padding-top: 10px;
+  border-top: 1px solid var(--border-soft);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.phase-service-tag {
+  font-family: 'Geist Mono', monospace; font-size: 8px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 2px 6px; border-radius: 3px; align-self: flex-start;
+}
+.phase-service-tag.lead { background: var(--accent); color: white; }
+.phase-service-tag.followup { background: var(--slate); color: white; }
+.phase-service-name {
+  font-size: 10.5px; font-weight: 600; color: var(--text-primary);
+  line-height: 1.3;
+}
+.phase-audience {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 600; margin-top: 2px;
+}
+
+/* WHAT WE SELL */
+.services {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.svc-card {
+  background: white; border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 20px 22px 18px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.svc-aud {
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.13em;
+  font-weight: 700; line-height: 1.4;
+}
+.svc-h {
+  font-size: 15px; font-weight: 600; line-height: 1.25;
+  color: var(--text-primary); letter-spacing: -0.01em;
+}
+.svc-what {
+  font-size: 11.5px; color: var(--text-secondary); line-height: 1.6;
+  flex-grow: 1;
+}
+.svc-contact-block {
+  margin-top: auto; padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
+}
+.svc-contact-role {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em;
+  font-weight: 700; margin-bottom: 4px;
+}
+.svc-contact {
+  font-size: 12px; color: var(--text-primary); font-weight: 600;
+  line-height: 1.3;
+}
+.svc-contact small {
+  display: block; font-weight: 400; color: var(--text-tertiary);
+  font-size: 10px; margin-top: 3px; line-height: 1.4;
+}
+
+/* REFERENCES */
+.references {
+  margin-top: 28px;
+  padding: 18px 22px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+}
+.references-h {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.13em;
+  font-weight: 700; margin-bottom: 10px;
+}
+.references ol {
+  list-style: none; counter-reset: ref;
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: 28px; row-gap: 4px;
+}
+.references li {
+  font-size: 9.5px; color: var(--text-tertiary); line-height: 1.5;
+  counter-increment: ref;
+  padding-left: 18px; position: relative;
+}
+.references li::before {
+  content: counter(ref) ".";
+  position: absolute; left: 0; top: 0;
+  font-family: 'Geist Mono', monospace; font-weight: 700;
+  color: var(--accent); font-size: 9px;
+}
+.references em { font-style: italic; color: var(--text-secondary); }
+.references-note {
+  font-size: 10.5px; color: var(--text-tertiary); line-height: 1.6; margin: 0;
+}
+.references-note a {
+  color: var(--accent); text-decoration: none; font-weight: 600;
+}
+
+/* CONTACTS */
+.contacts {
+  margin-top: 22px;
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 24px; align-items: start;
+  padding: 16px 22px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg);
+}
+.contacts-h {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--accent); text-transform: uppercase; letter-spacing: 0.13em;
+  font-weight: 700; padding-top: 3px; white-space: nowrap;
+}
+.contacts-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.contact-item { display: flex; flex-direction: column; gap: 3px; }
+.contact-name { font-size: 12.5px; font-weight: 600; color: var(--text-primary); }
+.contact-role {
+  font-family: 'Geist Mono', monospace; font-size: 9px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.07em;
+  line-height: 1.45;
+}
+
+/* FOOTER */
+.contact-footer {
+  margin-top: 22px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Geist Mono', monospace; font-size: 10px;
+  color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.contact-footer a { color: var(--accent); text-decoration: none; }
+
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { font-size: 10px; }
+  .page { padding: 0; max-width: none; margin: 0; }
+
+  /* tight vertical rhythm so page 1 holds the banner + both cards */
+  .brand-row { margin-bottom: 11px; padding-bottom: 9px; }
+  .hero { margin-bottom: 9px; }
+  .hero h1 { font-size: 22px; margin-bottom: 6px; }
+  .hero p { font-size: 11px; }
+  .hero-audience { margin-top: 7px; gap: 6px; }
+  .aud-tag { padding: 4px 10px 4px 9px; font-size: 10.5px; }
+  .section { margin-bottom: 10px; }
+  .section-eyebrow { margin-bottom: 6px; }
+  .section-h { font-size: 17px; margin-bottom: 4px; }
+  .section-sub { font-size: 11px; margin-bottom: 9px; }
+
+  .problem-grid { gap: 9px; }
+  .prob { padding: 10px 12px; gap: 6px; }
+  .prob-body { font-size: 10.5px; }
+  .prob-stat { padding-top: 8px; }
+  .prob-stat-num { font-size: 18px; }
+
+  .solution-banner.duo { margin-bottom: 5px; gap: 5px; }
+  .banner-shot { min-height: 84px; }
+  .banner-cap { margin-bottom: 7px; font-size: 11px; }
+  .solution-grid { gap: 9px; }
+  .sol { padding: 9px 11px; gap: 6px; }
+  .sol-visual { height: 58px; margin-bottom: 2px; }
+  .sol-visual img { max-height: 48px; }
+  .device-slot img { max-height: 46px; }
+  .sol-body { font-size: 10.5px; }
+  .sol-foot { padding-top: 7px; }
+
+  .cat { padding: 10px 13px; margin-top: 8px; }
+  .cat-head { margin-bottom: 7px; padding-bottom: 6px; }
+  .cat-caption { margin-bottom: 7px; }
+  .cat-legend { margin-bottom: 7px; padding-bottom: 6px; }
+  .cat-row { padding: 4px 0; }
+  .cat-chips { gap: 3px; }
+  .cat-chip { font-size: 7.5px; padding: 1px 4px; line-height: 1.25; }
+  .cov-meter { display: none; }
+  .cat-coverage small { margin-top: 0; }
+  .cat-beyond { margin-top: 7px; padding-top: 7px; }
+
+  .cta-row { margin-top: 9px; }
+  .cta { padding: 10px 14px; }
+  .page-break { page-break-before: auto; padding-top: 0; }
+
+  .progression { padding: 9px 12px 4px; margin-bottom: 7px; }
+  .journey-phases { gap: 5px; margin-bottom: 5px; }
+  .jp { padding: 5px 5px 6px; }
+  .jp-phase { font-size: 11px; }
+  .jp-svc { font-size: 10px; }
+  .jp-time, .jp-tag, .jp-aud { font-size: 7px; }
+  .progression-note { margin-top: 6px; padding-top: 6px; font-size: 8px; }
+
+  .services { gap: 9px; }
+  .svc-card { padding: 11px 13px; }
+  .svc-h { font-size: 13.5px; }
+  .svc-what { font-size: 10px; }
+  .references { margin-top: 12px; padding: 12px 15px; }
+  .references ol { row-gap: 2px; column-gap: 20px; }
+  .references li { font-size: 8px; }
+  .references-note { font-size: 9px; }
+  .contact-footer { margin-top: 11px; padding-top: 9px; }
+
+  /* no forced breaks — let content flow and fill pages; keep elements whole */
+  .prob, .sol, .banner-shot, .cat, .cat-beyond, .cta-row,
+  .progression, .jp, .svc-card, .references { page-break-inside: avoid; }
+  .section-h, .section-sub, .cat-head { page-break-after: avoid; }
+  .page-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="brand-row">
+    <div class="brand">
+      <div class="brand-mark">I</div>
+      <div class="brand-name">Insai</div>
+    </div>
+    <div class="brand-tag">Measurement for Parkinson's · insai.tech</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Continuous brain &amp; body measurement for Parkinson's</div>
+    <h1>Objective measurement for Parkinson's — <span class="accent">brain and body, day and night.</span></h1>
+    <p>Movement sensors track the symptom. We add the signals they physically can't reach: clinical-grade EEG, sleep, and 24-hour motor activity, so clinics, therapy developers, and trial sponsors can see the disease between visits.</p>
+    <div class="hero-audience">
+      <span class="aud-tag">Neuromodulation therapy companies</span>
+      <span class="aud-tag">Movement-disorder clinics</span>
+      <span class="aud-tag">Pharma trial sponsors</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       PAGE 1 · THE PROBLEM
+       ════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="section-num">01</span>The problem</div>
+    <h2 class="section-h">Parkinson's is still measured by hand.</h2>
+    <p class="section-sub">Everyone depends on the same episodic, clinician-rated exam. Between visits the disease is invisible, and that gap shows up as misdiagnosis, failed trials, and therapies that can't prove they work.</p>
+
+    <div class="problem-grid">
+      <div class="prob">
+        <div class="prob-h">Episodic and subjective</div>
+        <p class="prob-body">Scored by clinician judgment at visits 3 to 6 months apart. In the PPMI cohort, real-world within-subject reliability of the change score is just <strong>≈0.50</strong><sup>1</sup> — most of what you measure is noise.</p>
+        <div class="prob-stat">
+          <div class="prob-stat-num">≈0.50</div>
+          <div class="prob-stat-label">MDS-UPDRS within-subject reliability · PPMI</div>
+        </div>
+      </div>
+
+      <div class="prob">
+        <div class="prob-h">Wrong at the first visit</div>
+        <p class="prob-body">At the first untreated visit, clinical accuracy against autopsy is only <strong>26%</strong><sup>2</sup>, reaching ~85% only after years of follow-up. Slow and uncertain in exactly the window where early treatment matters most.</p>
+        <div class="prob-stat">
+          <div class="prob-stat-num">26%</div>
+          <div class="prob-stat-label">Diagnostic accuracy · first untreated visit</div>
+        </div>
+      </div>
+
+      <div class="prob">
+        <div class="prob-h">Hard to prove what works</div>
+        <p class="prob-body">Recent disease-modifying trials have moved MDS-UPDRS Part III by less than its <strong>3.25-point</strong><sup>3</sup> minimal clinically important difference. When the scale can't resolve the effect, you can't tell whether the drug worked.</p>
+        <div class="prob-stat">
+          <div class="prob-stat-num">3.25 pt</div>
+          <div class="prob-stat-label">MDS-UPDRS III MCID · effects fall short</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       PAGE 1 · THE SOLUTION
+       ════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-eyebrow"><span class="section-num">02</span>The solution</div>
+    <h2 class="section-h">Insai measures it continuously.</h2>
+    <p class="section-sub">Three clinical-grade wearables and one biomarker platform. We capture the brain and body continuously — including sleep, the window movement sensors can't reach.</p>
+
+    <div class="solution-banner duo">
+      <figure class="banner-shot">
+        <img src="images/paragit-sleeve-day.png" alt="A man at home during the day wearing the Paragit sleeve on his upper arm"/>
+        <figcaption><span class="dot"></span>Day · 24-hour motion</figcaption>
+      </figure>
+      <figure class="banner-shot">
+        <img src="images/nexus-sleep-night.png" alt="A man asleep at home wearing the Nexus headband for overnight EEG"/>
+        <figcaption><span class="dot"></span>Night · overnight EEG</figcaption>
+      </figure>
+    </div>
+    <div class="banner-cap"><strong>Brain and body, day and night</strong> — one continuous record, captured at home.</div>
+
+    <div class="solution-grid">
+
+      <div class="sol">
+        <!-- device photos -->
+        <div class="sol-visual sol-devices">
+          <div class="device-slot">
+            <img src="images/nexus-headband.png" alt="Nexus Headband"/>
+            <div class="device-label">Nexus Headband</div>
+          </div>
+          <div class="device-slot">
+            <img src="images/paragit-sleeve.png" alt="Paragit Sleeve"/>
+            <div class="device-label">Paragit Sleeve</div>
+          </div>
+          <div class="device-slot">
+            <img src="images/neurobuds.png" alt="Cebreo NeuroBuds"/>
+            <div class="device-label">Cebreo NeuroBuds</div>
+          </div>
+        </div>
+        <div class="sol-eyebrow">Clinical hardware · 3 devices</div>
+        <div class="sol-h">Whole-body data, day and night.</div>
+        <p class="sol-body">One continuous record: overnight EEG, 24-hour movement, and daytime cortical signal. All three are in testing at Rigshospitalet across Parkinson's, RBD, and epilepsy; the in-ear NeuroBuds carry the most validation so far.</p>
+        <div class="sol-foot">In testing at Rigshospitalet<small>PD · RBD · epilepsy</small></div>
+      </div>
+
+      <div class="sol">
+        <div class="sol-visual sol-screenshot">
+          <img src="images/analytics-portal.png" alt="Insai biomarker portal — sleep architecture and quality analysis"/>
+          <div class="shot-caption"><span class="dot"></span>Insai portal</div>
+        </div>
+        <div class="sol-eyebrow">Analytics · PD models</div>
+        <div class="sol-h">Signal turned into Parkinson's measures.</div>
+        <p class="sol-body">Our models turn raw wearable signal into Parkinson's-specific measures. <strong>Tremor screening hits AUPR 0.81</strong> across five device classes and ~150 PD subjects, beating the published DREAM benchmark<sup>4</sup>; severity tracks <strong>MDS-UPDRS at ρ 0.80</strong>. Sleep staging reaches <strong>κ 0.78</strong> against clinical PSG, above the U-Sleep<sup>5</sup> baseline, and feeds our fragmentation and architecture markers.</p>
+        <div class="sol-foot">AUPR 0.81 · ρ 0.80<small>Tremor screening &amp; severity vs MDS-UPDRS</small></div>
+      </div>
+
+    </div>
+
+    <!-- MDS-UPDRS COVERAGE -->
+    <div class="cat">
+      <div class="cat-head">
+        <div class="cat-title">Coverage across MDS-UPDRS</div>
+      </div>
+
+      <div class="cat-caption">Coverage by signal, mapped to MDS-UPDRS items. <strong>Validated today</strong> runs on our data now; <strong>Next</strong> is in active development.</div>
+
+      <div class="cat-legend">
+        <span class="cat-legend-label">Legend</span>
+        <span class="cat-chip live">Validated today</span>
+        <span class="cat-chip next">Next</span>
+      </div>
+
+      <div class="cat-row">
+        <div class="cat-group">
+          <div class="cat-group-name">Part I · Non-motor</div>
+          <div class="cat-group-meta">Daily-living symptoms</div>
+          <div class="cat-coverage"><span class="today">1 today</span><span class="sep">·</span><span class="next">3 next</span><small>of 13 items</small><div class="cov-meter"><span class="seg-live" style="flex:1"></span><span class="seg-next" style="flex:3"></span><span class="seg-none" style="flex:9"></span></div></div>
+        </div>
+        <div class="cat-chips">
+          <span class="cat-chip live">Sleep problems</span>
+          <span class="cat-chip next">Cognitive impairment</span>
+          <span class="cat-chip next">Depressed mood</span>
+          <span class="cat-chip next">Daytime sleepiness</span>
+          <span class="cat-chip none">Anxious mood</span>
+          <span class="cat-chip none">Apathy</span>
+          <span class="cat-chip none">Fatigue</span>
+          <span class="cat-chip none">Hallucinations</span>
+          <span class="cat-chip none">Dopamine dysregulation</span>
+          <span class="cat-chip none">Pain</span>
+          <span class="cat-chip none">Urinary</span>
+          <span class="cat-chip none">Constipation</span>
+          <span class="cat-chip none">Light-headedness</span>
+        </div>
+      </div>
+
+      <div class="cat-row">
+        <div class="cat-group">
+          <div class="cat-group-name">Part II · Motor ADL</div>
+          <div class="cat-group-meta">Patient-reported function</div>
+          <div class="cat-coverage"><span class="today">1 today</span><span class="sep">·</span><span class="next">3 next</span><small>of 13 items</small><div class="cov-meter"><span class="seg-live" style="flex:1"></span><span class="seg-next" style="flex:3"></span><span class="seg-none" style="flex:9"></span></div></div>
+        </div>
+        <div class="cat-chips">
+          <span class="cat-chip live">Tremor</span>
+          <span class="cat-chip next">Walking and balance</span>
+          <span class="cat-chip next">Turning in bed</span>
+          <span class="cat-chip next">Getting out of chair</span>
+          <span class="cat-chip none">Freezing</span>
+          <span class="cat-chip none">Eating tasks</span>
+          <span class="cat-chip none">Hobbies / activity</span>
+          <span class="cat-chip none">Handwriting</span>
+          <span class="cat-chip none">Speech</span>
+          <span class="cat-chip none">Saliva &amp; drooling</span>
+          <span class="cat-chip none">Chewing</span>
+          <span class="cat-chip none">Dressing</span>
+          <span class="cat-chip none">Hygiene</span>
+        </div>
+      </div>
+
+      <div class="cat-row">
+        <div class="cat-group">
+          <div class="cat-group-name">Part III · Motor exam</div>
+          <div class="cat-group-meta">Clinician-rated · the trial endpoint</div>
+          <div class="cat-coverage"><span class="today">4 today</span><span class="sep">·</span><span class="next">5 next</span><small>of 18 items</small><div class="cov-meter"><span class="seg-live" style="flex:4"></span><span class="seg-next" style="flex:5"></span><span class="seg-none" style="flex:9"></span></div></div>
+        </div>
+        <div class="cat-chips">
+          <span class="cat-chip live">Rest tremor</span>
+          <span class="cat-chip live">Postural tremor</span>
+          <span class="cat-chip live">Kinetic tremor</span>
+          <span class="cat-chip live">Constancy of rest tremor</span>
+          <span class="cat-chip next">Rigidity</span>
+          <span class="cat-chip next">Body bradykinesia</span>
+          <span class="cat-chip next">Finger tapping</span>
+          <span class="cat-chip next">Gait</span>
+          <span class="cat-chip next">Arising from chair</span>
+          <span class="cat-chip none">Hand movements</span>
+          <span class="cat-chip none">Pronation-supination</span>
+          <span class="cat-chip none">Toe tapping</span>
+          <span class="cat-chip none">Leg agility</span>
+          <span class="cat-chip none">Freezing of gait</span>
+          <span class="cat-chip none">Postural stability</span>
+          <span class="cat-chip none">Posture</span>
+          <span class="cat-chip none">Speech</span>
+          <span class="cat-chip none">Facial expression</span>
+        </div>
+      </div>
+
+      <div class="cat-row">
+        <div class="cat-group">
+          <div class="cat-group-name">Part IV · Motor complications</div>
+          <div class="cat-group-meta">Fluctuations &amp; dyskinesia</div>
+          <div class="cat-coverage"><span class="next">3 next</span><small>of 6 items</small><div class="cov-meter"><span class="seg-next" style="flex:3"></span><span class="seg-none" style="flex:3"></span></div></div>
+        </div>
+        <div class="cat-chips">
+          <span class="cat-chip next">Time in OFF state</span>
+          <span class="cat-chip next">Time with dyskinesia</span>
+          <span class="cat-chip next">Functional impact of dyskinesia</span>
+          <span class="cat-chip none">Functional impact of fluctuations</span>
+          <span class="cat-chip none">Complexity of fluctuations</span>
+          <span class="cat-chip none">Painful OFF dystonia</span>
+        </div>
+      </div>
+
+      <div class="cat-beyond">
+        <span class="cat-beyond-tag">Beyond MDS-UPDRS</span>
+        <span class="cat-beyond-text"><strong>We also measure where progression and prodromal PD live</strong>: sleep and EEG, on the headband today.</span>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta cta-dark" href="https://insai.github.io/biomarker-portal/research/">
+        <div class="cta-text">
+          <div class="cta-title">See the full biomarker validation, methods &amp; references</div>
+          <div class="cta-sub">Nexus research hub · insai.github.io/biomarker-portal</div>
+        </div>
+        <div class="cta-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- visual divider only in screen view -->
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════════
+       PAGE 2 · COMMERCIAL OPPORTUNITIES
+       ════════════════════════════════════════════════ -->
+  <div class="page-break">
+
+    <section class="section">
+      <div class="section-eyebrow"><span class="section-num">03</span>Commercial opportunities</div>
+      <h2 class="section-h">Services built around the patient journey.</h2>
+      <p class="section-sub">Parkinson's follows a slow decline the system meets late and measures rarely. Our thesis: measure earlier and continuously, and you can bend that curve. Each phase opens a service that targets a specific failure the patient feels.</p>
+
+      <div class="progression">
+        <svg viewBox="0 0 800 258" role="img" aria-label="Disease progression curve; Insai bends the trajectory, with services pinned to each phase below.">
+          <!-- axes -->
+          <line x1="56" y1="252" x2="768" y2="252" stroke="#DDE3E7" stroke-width="1.5"/>
+          <line x1="56" y1="40" x2="56" y2="252" stroke="#DDE3E7" stroke-width="1.5"/>
+          <text transform="rotate(-90 24 150)" x="24" y="150" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="9" letter-spacing="0.8" fill="#8C98A4" font-weight="600">MORE DISABILITY</text>
+          <!-- phase guides connect curve points to the boxes below -->
+          <g stroke="#EAEEF1" stroke-width="1">
+            <line x1="80" y1="48" x2="80" y2="252"/>
+            <line x1="240" y1="48" x2="240" y2="252"/>
+            <line x1="400" y1="48" x2="400" y2="252"/>
+            <line x1="560" y1="48" x2="560" y2="252"/>
+            <line x1="720" y1="48" x2="720" y2="252"/>
+          </g>
+          <!-- gap we aim to prevent -->
+          <path d="M56,242 C180,238 300,226 412,182 C524,134 648,92 764,62 L764,166 C700,174 600,188 460,212 C340,232 200,240 56,242 Z" fill="#ECFDF8"/>
+          <!-- untreated decline -->
+          <path d="M56,242 C180,238 300,226 412,182 C524,134 648,92 764,62" stroke="#64748B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- with insai -->
+          <path d="M56,242 C200,240 340,232 460,212 C600,188 700,174 764,166" stroke="#0D9488" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <text x="762" y="54" text-anchor="end" font-family="'Geist Mono', monospace" font-size="9" letter-spacing="0.5" fill="#64748B" font-weight="700">UNTREATED DECLINE</text>
+          <text x="762" y="182" text-anchor="end" font-family="'Geist Mono', monospace" font-size="9" letter-spacing="0.5" fill="#064E48" font-weight="700">WITH INSAI</text>
+          <text x="298" y="206" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="8.5" letter-spacing="0.5" fill="#0D9488" font-weight="600">DISABILITY WE AIM TO PREVENT</text>
+          <!-- friction points tied to the problem -->
+          <circle cx="400" cy="186" r="4" fill="#B45309"/>
+          <text x="400" y="154" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="9" letter-spacing="0.5" fill="#B45309" font-weight="700">26% DX ACCURACY</text>
+          <circle cx="560" cy="114" r="4" fill="#B45309"/>
+          <text x="560" y="88" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="9" letter-spacing="0.5" fill="#B45309" font-weight="700">≈0.50 RELIABILITY · CAN'T TITRATE</text>
+          <!-- service anchor dots on the Insai curve -->
+          <circle cx="80" cy="241" r="3.5" fill="#0D9488"/>
+          <circle cx="240" cy="236" r="3.5" fill="#0D9488"/>
+          <circle cx="400" cy="220" r="3.5" fill="#0D9488"/>
+          <circle cx="560" cy="193" r="3.5" fill="#0D9488"/>
+          <circle cx="720" cy="171" r="3.5" fill="#64748B"/>
+        </svg>
+        <div class="journey-phases">
+          <div class="jp">
+            <div class="jp-phase">Pre-symptomatic</div>
+            <div class="jp-time">10–20 yr before</div>
+            <div class="jp-div"></div>
+            <div class="jp-tag">Lead</div>
+            <div class="jp-svc">RBD home screening</div>
+            <div class="jp-aud">Screening clinics</div>
+          </div>
+          <div class="jp">
+            <div class="jp-phase">Prodromal</div>
+            <div class="jp-time">5–10 yr before</div>
+            <div class="jp-div"></div>
+            <div class="jp-tag">Lead</div>
+            <div class="jp-svc">iRBD enrichment</div>
+            <div class="jp-aud">Pharma sponsors</div>
+          </div>
+          <div class="jp">
+            <div class="jp-phase">Diagnosis</div>
+            <div class="jp-time">Year 0</div>
+            <div class="jp-div"></div>
+            <div class="jp-tag">Lead</div>
+            <div class="jp-svc">Differential dx panel</div>
+            <div class="jp-aud">Movement clinics</div>
+          </div>
+          <div class="jp">
+            <div class="jp-phase">Established</div>
+            <div class="jp-time">Yr 5–10</div>
+            <div class="jp-div"></div>
+            <div class="jp-tag">Lead</div>
+            <div class="jp-svc">Therapy outcomes</div>
+            <div class="jp-aud">Neuromod. therapy</div>
+          </div>
+          <div class="jp followup">
+            <div class="jp-phase">Advanced</div>
+            <div class="jp-time">Yr 10+</div>
+            <div class="jp-div"></div>
+            <div class="jp-tag">Fast follow</div>
+            <div class="jp-svc">DMT endpoint panel</div>
+            <div class="jp-aud">Pharma sponsors</div>
+          </div>
+        </div>
+        <div class="progression-legend">
+          <span class="prog-key"><span class="swatch untreated"></span>Untreated decline</span>
+          <span class="prog-key"><span class="swatch insai"></span>Earlier &amp; continuous measurement</span>
+          <span class="prog-key"><span class="swatch gap"></span>Disability we aim to prevent</span>
+        </div>
+        <div class="progression-note">Schematic. Parkinson's is now staged across a biological continuum from pre-symptomatic to advanced (Simuni et al., <em>Lancet Neurology</em> 2024)<sup>6</sup>. Detecting a change in that trajectory depends on more sensitive, continuous measurement than the episodic exam provides (Ribba et al., <em>J Parkinsons Dis</em> 2024)<sup>7</sup>.</div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         PAGE 2 · WHAT WE SELL
+         ════════════════════════════════════════════════ -->
+    <section class="section sell-section">
+      <div class="section-eyebrow"><span class="section-num">04</span>What we sell</div>
+      <h2 class="section-h">Three offers, three buyers.</h2>
+      <p class="section-sub">The five phases collapse into three offers, one per buyer. Each closes a documented gap.</p>
+
+      <div class="services">
+
+        <div class="svc-card">
+          <div class="svc-aud">Neuromodulation<br>therapy companies</div>
+          <div class="svc-h">Make non-invasive neuromodulation provable.</div>
+          <p class="svc-what">Continuous motor and sleep response data for non-invasive neuromodulation: T-PEMF, photobiomodulation, TMS, focused ultrasound. Among incisionless interventions, focused-ultrasound subthalamotomy is one of the few validated in a randomized, sham-controlled trial<sup>8</sup>; continuous wearable evidence gives your medical-affairs team something concrete to show payers and regulators.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-aud">Movement-disorder<br>clinics</div>
+          <div class="svc-h">Continuous monitoring alongside the exam.</div>
+          <p class="svc-what">Continuous monitoring for research clinics and treatment-optimization centres. The standard exam gives you ≈0.50 change-score reliability<sup>1</sup> and ~60% home-diary agreement<sup>9</sup>; we add validated 24-hour tremor and sleep architecture today, with bradykinesia, ON/OFF and dyskinesia, and RBD screening on the roadmap.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-aud">Pharma<br>trial sponsors</div>
+          <div class="svc-h">Faster trials, sharper endpoints.</div>
+          <p class="svc-what">Two services for clinical development: home iRBD screening to enrich prodromal cohorts, and multi-modal endpoint panels for disease-modifying trials where the standard scales aren't sensitive enough — the same gap the α-synuclein seed-amplification assay<sup>10</sup>, its FDA Letter of Support<sup>11</sup>, and MJFF's WATCH-PD<sup>12</sup> are moving to close.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <div class="references">
+      <div class="references-h">Sources</div>
+      <ol>
+        <li>Evers LJW, et al. Measuring Parkinson's disease over time: the real-world within-subject reliability of the MDS-UPDRS. <em>Mov Disord</em> 2019;34(10):1480–1487.</li>
+        <li>Adler CH, et al. Low clinical diagnostic accuracy of early vs advanced Parkinson disease: a clinicopathologic study. <em>Neurology</em> 2014;83(5):406–412.</li>
+        <li>Horváth K, et al. Minimal clinically important difference on the motor examination part of the MDS-UPDRS. <em>Parkinsonism Relat Disord</em> 2015;21(12):1421–1426.</li>
+        <li>Sieberts SK, et al. Crowdsourcing digital health measures to predict Parkinson's disease severity: the PD Digital Biomarker DREAM Challenge. <em>npj Digit Med</em> 2021;4:53.</li>
+        <li>Perslev M, et al. U-Sleep: resilient high-frequency sleep staging. <em>npj Digit Med</em> 2021;4:72.</li>
+        <li>Simuni T, et al. A biological definition of neuronal α-synuclein disease: towards an integrated staging system for research. <em>Lancet Neurol</em> 2024;23(2):178–190.</li>
+        <li>Ribba B, et al. Modeling of Parkinson's disease progression and implications for detection of disease modification in treatment trials. <em>J Parkinsons Dis</em> 2024;14(6):1225–1235.</li>
+        <li>Martínez-Fernández R, et al. Randomized trial of focused ultrasound subthalamotomy for Parkinson's disease. <em>N Engl J Med</em> 2020;383(26):2501–2513.</li>
+        <li>Löhle M, et al. Validation of the PD home diary for assessment of motor fluctuations in advanced Parkinson's disease. <em>npj Parkinsons Dis</em> 2022;8:69.</li>
+        <li>Siderowf A, et al. Assessment of heterogeneity among PPMI participants using α-synuclein seed amplification: a cross-sectional study. <em>Lancet Neurol</em> 2023;22(5):407–417.</li>
+        <li>Critical Path Institute / FDA. Letter of Support for the α-synuclein seed amplification assay biomarker; 2024.</li>
+        <li>Adams JL, et al. Using a smartwatch and smartphone to assess early Parkinson's disease in the WATCH-PD study. <em>npj Parkinsons Dis</em> 2023;9:64.</li>
+      </ol>
+      <p class="references-note">Our own results — tremor screening AUPR 0.81, severity ρ 0.80, sleep staging κ 0.78 — come from internal validation runs. Full methods and reports live in the Nexus research hub, <a href="https://insai.github.io/biomarker-portal/research/">insai.github.io/biomarker-portal/research</a>.</p>
+    </div>
+
+    <div class="contact-footer">
+      <span>Insai · <a href="https://insai.tech">insai.tech</a> · <a href="mailto:mark@insai.tech">mark@insai.tech</a></span>
+      <span>Version 28.0 · 2026-06-26 · print-optimized · 3-page PDF</span>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
