@@ -5,10 +5,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insai · Measurement for Parkinson's</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Self-hosted Geist — no CDN dependency. Variable woff2 covers weights 100–900. */
+@font-face {
+  font-family: 'Geist';
+  src: url('assets/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('assets/fonts/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+/* Unique-family probe: no system has this family installed, so if text renders in it
+   the self-hosted file MUST have loaded — it cannot be masked by a local Geist install. */
+@font-face {
+  font-family: 'GeistSelfHostProbe';
+  src: url('assets/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900; font-display: block;
+}
 @page { size: A4; margin: 11mm; }
 :root {
   --bg: #FFFFFF;
@@ -32,7 +47,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
   background: var(--bg); color: var(--text-primary);
-  font-family: 'Geist', system-ui, sans-serif;
+  font-family: 'Geist', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 13px; line-height: 1.55;
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
@@ -1383,7 +1398,7 @@ sup {
 
     <div class="contact-footer">
       <span>Insai · <a href="https://insai.tech">insai.tech</a> · <a href="mailto:mark@insai.tech">mark@insai.tech</a></span>
-      <span>Version 28.0 · 2026-06-26 · print-optimized · 3-page PDF</span>
+      <span>Version 29.0 · 2026-06-29 · self-hosted fonts (no CDN)</span>
     </div>
 
   </div>
