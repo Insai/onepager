@@ -24,7 +24,7 @@
   src: url('assets/fonts/Geist-Variable.woff2') format('woff2');
   font-weight: 100 900; font-display: block;
 }
-@page { size: A4; margin: 11mm; }
+@page { size: A4; margin: 12mm; }
 :root {
   --bg: #FFFFFF;
   --surface: #F8FAFB;
@@ -933,76 +933,19 @@ sup {
 .contact-footer a { color: var(--accent); text-decoration: none; }
 
 @media print {
-  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  html, body { font-size: 10px; }
-  .page { padding: 0; max-width: none; margin: 0; }
+  /* Faithful PDF: render the real desktop layout and zoom it onto A4 so text and
+     proportions match the browser — not a separate, shrunk print design. */
+  html { zoom: 0.70; }   /* A4 content width ÷ design width; tuned for clean 3-page flow */
+  .page { max-width: none; width: 100%; margin: 0; padding: 0; }
 
-  /* tight vertical rhythm so page 1 holds the banner + both cards */
-  .brand-row { margin-bottom: 11px; padding-bottom: 9px; }
-  .hero { margin-bottom: 9px; }
-  .hero h1 { font-size: 22px; margin-bottom: 6px; }
-  .hero p { font-size: 11px; }
-  .hero-audience { margin-top: 7px; gap: 6px; }
-  .aud-tag { padding: 4px 10px 4px 9px; font-size: 10.5px; }
-  .section { margin-bottom: 10px; }
-  .section-eyebrow { margin-bottom: 6px; }
-  .section-h { font-size: 17px; margin-bottom: 4px; }
-  .section-sub { font-size: 11px; margin-bottom: 9px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none; }
+  html, body { background: #fff; }
 
-  .problem-grid { gap: 9px; }
-  .prob { padding: 10px 12px; gap: 6px; }
-  .prob-body { font-size: 10.5px; }
-  .prob-stat { padding-top: 8px; }
-  .prob-stat-num { font-size: 18px; }
-
-  .solution-banner.duo { margin-bottom: 5px; gap: 5px; }
-  .banner-shot { min-height: 84px; }
-  .banner-cap { margin-bottom: 7px; font-size: 11px; }
-  .solution-grid { gap: 9px; }
-  .sol { padding: 9px 11px; gap: 6px; }
-  .sol-visual { height: 58px; margin-bottom: 2px; }
-  .sol-visual img { max-height: 48px; }
-  .device-slot img { max-height: 46px; }
-  .sol-body { font-size: 10.5px; }
-  .sol-foot { padding-top: 7px; }
-
-  .cat { padding: 10px 13px; margin-top: 8px; }
-  .cat-head { margin-bottom: 7px; padding-bottom: 6px; }
-  .cat-caption { margin-bottom: 7px; }
-  .cat-legend { margin-bottom: 7px; padding-bottom: 6px; }
-  .cat-row { padding: 4px 0; }
-  .cat-chips { gap: 3px; }
-  .cat-chip { font-size: 7.5px; padding: 1px 4px; line-height: 1.25; }
-  .cov-meter { display: none; }
-  .cat-coverage small { margin-top: 0; }
-  .cat-beyond { margin-top: 7px; padding-top: 7px; }
-
-  .cta-row { margin-top: 9px; }
-  .cta { padding: 10px 14px; }
-  .page-break { page-break-before: auto; padding-top: 0; }
-
-  .progression { padding: 9px 12px 4px; margin-bottom: 7px; }
-  .journey-phases { gap: 5px; margin-bottom: 5px; }
-  .jp { padding: 5px 5px 6px; }
-  .jp-phase { font-size: 11px; }
-  .jp-svc { font-size: 10px; }
-  .jp-time, .jp-tag, .jp-aud { font-size: 7px; }
-  .progression-note { margin-top: 6px; padding-top: 6px; font-size: 8px; }
-
-  .services { gap: 9px; }
-  .svc-card { padding: 11px 13px; }
-  .svc-h { font-size: 13.5px; }
-  .svc-what { font-size: 10px; }
-  .references { margin-top: 12px; padding: 12px 15px; }
-  .references ol { row-gap: 2px; column-gap: 20px; }
-  .references li { font-size: 8px; }
-  .references-note { font-size: 9px; }
-  .contact-footer { margin-top: 11px; padding-top: 9px; }
-
-  /* no forced breaks — let content flow and fill pages; keep elements whole */
+  /* page-break control only (no size/spacing overrides) */
   .prob, .sol, .banner-shot, .cat, .cat-beyond, .cta-row,
-  .progression, .jp, .svc-card, .references { page-break-inside: avoid; }
-  .section-h, .section-sub, .cat-head { page-break-after: avoid; }
+  .progression, .jp, .svc-card, .references { break-inside: avoid; page-break-inside: avoid; }
+  .section-h, .section-sub, .cat-head { break-after: avoid; page-break-after: avoid; }
+  .page-break { page-break-before: auto; }   /* let content flow; no forced section break */
   .page-divider { display: none; }
 }
 </style>
@@ -1398,7 +1341,7 @@ sup {
 
     <div class="contact-footer">
       <span>Insai · <a href="https://insai.tech">insai.tech</a> · <a href="mailto:mark@insai.tech">mark@insai.tech</a></span>
-      <span>Version 29.0 · 2026-06-29 · self-hosted fonts (no CDN)</span>
+      <span>Version 30.0 · 2026-06-29 · faithful print scaling (zoom-to-A4)</span>
     </div>
 
   </div>
