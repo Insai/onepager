@@ -157,13 +157,24 @@
   .foot a{color:var(--accent);text-decoration:none}
   .src{font-size:9.5px;color:var(--text-tertiary);line-height:1.5;margin-top:12px;font-style:italic}
 
-  @media (max-width:880px){
+  @media screen and (max-width:880px){
     .hero h1{font-size:31px}.hero-meta{flex-direction:column;gap:14px}
     .pillars,.doors,.caps,.lanes,.showcase{grid-template-columns:1fr}
     .cap{border-left:none;border-top:1px solid var(--border-subtle)}.cap:first-child{border-top:none}
     .sys-imgs{grid-template-columns:1fr;gap:18px}.sys-plus{transform:rotate(90deg)}
   }
-  @media print{body{padding:0}.block,.sys,.pillar,.door,.screen,.cta{page-break-inside:avoid}}
+  /* PRINT / PDF — faithful to the screen layout, just scaled to fit A4.
+     zoom ≈ A4 content width (~703px @ 12mm margins) / design width (980px) ≈ 0.71 */
+  @media print{
+    @page{size:A4;margin:12mm}
+    html{zoom:0.71}
+    *{box-shadow:none !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    html,body{background:#fff}
+    body{padding:0}
+    .page{max-width:none;width:100%;margin:0;padding:0}
+    .sys,.showcase,.caps,.cap,.pillars,.pillar,.doors,.door,.screen,.sc-screen,.cta,.research-banner,.hero-meta{break-inside:avoid}
+    .sh,h1,h2,.cta-h,.door-h,.cap-h,.p-h{break-after:avoid}
+  }
 </style>
 </head>
 <body>
