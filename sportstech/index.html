@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insai · Brain + body, measured directly</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/style.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-mono/style.css">
 <style>
+  /* Self-hosted Geist (variable) — no external CDN dependency, renders identically on every device */
+  @font-face{font-family:'Geist';font-style:normal;font-display:swap;font-weight:100 900;src:url('assets/fonts/geist-latin-wght-normal.woff2') format('woff2')}
+  @font-face{font-family:'Geist Mono';font-style:normal;font-display:swap;font-weight:100 900;src:url('assets/fonts/geist-mono-latin-wght-normal.woff2') format('woff2')}
   :root{
     --bg:#FFFFFF;--bg-tint:#F1F5F9;--surface:#FFFFFF;
     --border:#DDE3E7;--border-subtle:#EAEEF1;--border-strong:#C6D0D8;
@@ -18,7 +18,7 @@
     --shadow-sm:0 1px 2px rgba(11,18,32,.04);--shadow-md:0 4px 16px rgba(11,18,32,.05),0 1px 2px rgba(11,18,32,.04);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--text-primary);font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","ss02","cv11";font-variant-numeric:tabular-nums}
+  html,body{background:var(--bg);color:var(--text-primary);font-family:'Geist','Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
   body{padding:36px 32px}
   .page{max-width:980px;margin:0 auto}
   sup{font-family:'Geist Mono',monospace;font-size:9px;color:var(--accent);font-weight:700;vertical-align:super;line-height:0}
