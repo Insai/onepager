@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insai · Home EEG sleep monitoring — feasibility study</title>
+<meta name="description" content="At-cost research collaboration proposal and budget from Insai ApS for a home EEG sleep-monitoring feasibility study in a psychiatric outpatient cohort.">
+<style>
+/* Self-hosted Geist (variable) — no CDN dependency; renders identically on every device and in PDF. */
+@font-face{font-family:'Geist';src:url('assets/fonts/geist-latin-wght-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Geist Mono';src:url('assets/fonts/geist-mono-latin-wght-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+
+@page{size:A4;margin:12mm}
+
+:root{
+  /* Insai Proposals design system — teal on white */
+  --bg:#FFFFFF;
+  --bg-tint:#F1F5F9;
+  --surface:#FFFFFF;
+  --surface-raised:#F8FAFB;
+  --border:#DDE3E7;
+  --border-subtle:#EAEEF1;
+  --border-strong:#C6D0D8;
+
+  --text-primary:#0B1220;
+  --text-secondary:#475467;
+  --text-tertiary:#8C98A4;
+
+  --accent:#0D9488;
+  --accent-deep:#064E48;
+  --accent-soft:#ECFDF8;
+  --accent-mid:#5EEAD4;
+
+  --green:#15803D;
+  --green-soft:#E7F6EC;
+  --amber:#B45309;
+  --amber-soft:#FEF3E2;
+  --amber-mid:#F5D9A3;
+
+  --shadow-sm:0 1px 2px rgba(11,18,32,.04);
+  --shadow-md:0 4px 16px rgba(11,18,32,.05),0 1px 2px rgba(11,18,32,.04);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  background:var(--bg);color:var(--text-primary);
+  font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  font-size:14px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"ss01","ss02","cv11";
+  font-variant-numeric:tabular-nums;
+}
+
+body{padding:0 32px 48px;overflow-x:hidden}
+.page{max-width:1000px;margin:0 auto}
+
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ============ TOP BAR ============ */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 0;border-bottom:1px solid var(--border-subtle);
+  font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);
+  text-transform:uppercase;letter-spacing:.7px;
+}
+.brand{display:inline-flex;align-items:center;gap:10px;color:var(--text-primary);font-weight:500;font-size:13px;letter-spacing:-.01em;text-transform:none}
+.brand-mark{
+  width:22px;height:22px;border-radius:5px;
+  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:600;font-size:12px;
+}
+
+/* ============ HERO ============ */
+.hero{padding:48px 0 36px;position:relative;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;top:-80px;right:-160px;width:520px;height:520px;
+  background:radial-gradient(circle,var(--accent-soft) 0%,transparent 65%);pointer-events:none;
+}
+.hero-inner{position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Geist Mono',monospace;font-size:11px;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.8px;font-weight:500;margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero h1{font-size:42px;font-weight:600;letter-spacing:-.025em;line-height:1.08;margin-bottom:18px;max-width:800px;text-wrap:balance}
+.hero h1 .accent{color:var(--accent)}
+.hero-sub{font-size:16px;line-height:1.6;color:var(--text-secondary);max-width:680px;margin-bottom:28px}
+.hero-meta{display:grid;grid-template-columns:repeat(3,auto);gap:44px;justify-content:start;padding-top:24px;border-top:1px solid var(--border-subtle)}
+.hero-meta .item{display:flex;flex-direction:column;gap:4px}
+.hero-meta .label{font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px}
+.hero-meta .value{font-size:13px;color:var(--text-primary);font-weight:500}
+
+/* ============ AT-COST BANNER ============ */
+.costbar{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:10px;
+  padding:14px 18px;margin-bottom:8px;
+}
+.costbar .ic{flex:none;width:18px;height:18px;color:var(--accent-deep);margin-top:1px}
+.costbar .ic svg{width:18px;height:18px;display:block}
+.costbar .txt{font-size:13px;line-height:1.5;color:var(--accent-deep)}
+.costbar .txt strong{font-weight:600}
+
+/* ============ SECTIONS ============ */
+section.block{padding:44px 0;border-top:1px solid var(--border-subtle)}
+section.block:first-of-type{border-top:none}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.section-num{
+  font-family:'Geist Mono',monospace;font-size:11px;font-weight:700;
+  color:var(--accent-deep);letter-spacing:.04em;
+  background:var(--accent-soft);border:1px solid var(--accent-mid);
+  border-radius:5px;padding:3px 7px 2px;flex:none;
+}
+.section-head h2{font-size:24px;font-weight:600;letter-spacing:-.02em;color:var(--text-primary);line-height:1.2;text-wrap:balance}
+.section-head::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--border-subtle),transparent)}
+.section-lead{color:var(--text-secondary);font-size:15px;line-height:1.6;margin-bottom:22px;max-width:730px}
+.section-lead strong{color:var(--text-primary);font-weight:600}
+p.body{font-size:14px;line-height:1.65;color:var(--text-secondary);max-width:730px;margin-bottom:14px}
+p.body:last-child{margin-bottom:0}
+p.body strong{color:var(--text-primary);font-weight:600}
+
+/* ============ KEY FIGURES ============ */
+.figures{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:26px;
+}
+.fig-cell{padding:18px 22px;border-right:1px solid var(--border-subtle)}
+.fig-cell:last-child{border-right:none}
+.fig-cell .k{font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px}
+.fig-cell .v{font-family:'Geist Mono',monospace;font-size:21px;font-weight:500;letter-spacing:-.015em;color:var(--text-primary);line-height:1}
+.fig-cell .u{font-size:12px;color:var(--text-secondary);margin-top:6px;line-height:1.4}
+
+/* ============ FIGURE / DIAGRAM ============ */
+.diagram{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 28px 20px;box-shadow:var(--shadow-sm);margin:26px 0 12px}
+.diagram-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:6px}
+.diagram-title{font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px;font-weight:500}
+.diagram-meta{font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px}
+.fig-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:14px 0 18px}
+.leg{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary);line-height:1.4}
+.leg .sw{flex:none;width:12px;height:12px;border-radius:3px}
+.leg .sw.base{background:#0D9488}
+.leg .sw.treat{background:#F1F5F9;box-shadow:inset 0 0 0 1px #C6D0D8}
+.leg .sw.post{background:#064E48}
+.svg-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+.diagram svg{width:100%;height:auto;display:block}
+.scroll-hint{display:none;font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin-top:8px}
+.figcap{font-size:12px;line-height:1.55;color:var(--text-tertiary);margin-top:16px;padding-top:14px;border-top:1px solid var(--border-subtle)}
+.figcap strong{color:var(--text-secondary);font-weight:600}
+
+/* ============ NOTE ============ */
+.note{margin-top:18px;padding:14px 18px;background:var(--bg-tint);border-radius:8px;font-size:12.5px;color:var(--text-secondary);line-height:1.55}
+.note strong{color:var(--text-primary);font-weight:600}
+.note.accent{background:var(--accent-soft);color:var(--accent-deep)}
+.note.accent strong{color:var(--accent-deep)}
+
+/* ============ ROLE CARDS ============ */
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.role-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 24px 24px;box-shadow:var(--shadow-sm)}
+.role-card .icon{width:36px;height:36px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px}
+.role-card .icon svg{width:18px;height:18px}
+.role-card .name{font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.role-card .desc{font-size:13px;color:var(--text-secondary);line-height:1.55}
+
+/* ============ BUDGET TABLES ============ */
+.tbl-label{font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px;font-weight:500;margin:26px 0 10px}
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm)}
+table{width:100%;border-collapse:collapse}
+thead th{
+  font-family:'Geist Mono',monospace;font-size:10px;font-weight:500;
+  color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px;
+  text-align:left;background:var(--surface-raised);
+  padding:11px 20px;border-bottom:1px solid var(--border-subtle);
+}
+thead th.num{text-align:right}
+tbody td{padding:13px 20px;border-bottom:1px solid var(--border-subtle);font-size:13px;color:var(--text-secondary);line-height:1.5;vertical-align:top}
+tbody td strong{color:var(--text-primary);font-weight:600}
+tbody td .qual{color:var(--text-tertiary)}
+td.num{font-family:'Geist Mono',monospace;text-align:right;white-space:nowrap;color:var(--text-primary);font-size:13px}
+tbody tr:last-child td{border-bottom:none}
+tr.subtotal td{background:var(--accent-soft);border-top:1px solid var(--accent-mid);border-bottom:none;color:var(--accent-deep);font-weight:600;font-size:13px}
+tr.subtotal td.num{color:var(--accent-deep);font-weight:600}
+
+/* ============ GRAND TOTAL ============ */
+.grand{display:grid;grid-template-columns:repeat(4,1fr);background:var(--text-primary);border-radius:12px;overflow:hidden;margin-top:22px;box-shadow:var(--shadow-md)}
+.grand .cell{padding:22px 24px;border-right:1px solid rgba(255,255,255,.09)}
+.grand .cell:last-child{border-right:none}
+.grand .lbl{font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}
+.grand .val{font-family:'Geist Mono',monospace;font-size:24px;font-weight:500;color:#fff;letter-spacing:-.015em;line-height:1}
+.grand .cur{font-size:13px;color:var(--text-tertiary);margin-left:5px;font-weight:400}
+.grand .cell.hi{background:rgba(13,148,136,.16)}
+.grand .cell.hi .val{color:var(--accent-mid)}
+.grand .cell.hi .lbl{color:var(--accent-mid);opacity:.75}
+
+/* ============ DECISION CARDS ============ */
+.decisions{display:grid;gap:12px}
+.decision{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:20px 22px;box-shadow:var(--shadow-sm)}
+.decision .d-head{display:flex;align-items:baseline;gap:10px;margin-bottom:7px}
+.decision .d-num{font-family:'Geist Mono',monospace;font-size:10px;font-weight:700;color:var(--text-tertiary);letter-spacing:.5px;flex:none}
+.decision .d-title{font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--text-primary);line-height:1.3}
+.decision .d-body{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px;max-width:760px}
+.decision .d-body strong{color:var(--text-primary);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.3px;
+  padding:4px 10px 3px;border-radius:5px;border:1px solid var(--border);
+  background:var(--bg-tint);color:var(--text-secondary);white-space:nowrap;
+}
+.chip.assumed{background:var(--accent-soft);border-color:var(--accent-mid);color:var(--accent-deep);font-weight:500}
+.chip.delta{background:var(--amber-soft);border-color:var(--amber-mid);color:var(--amber)}
+.chip.open{background:var(--surface);border-color:var(--border-strong);color:var(--text-tertiary)}
+
+/* ============ TIMELINE (regulatory path) ============ */
+.timeline{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px 28px;box-shadow:var(--shadow-sm)}
+.timeline-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:24px}
+.timeline-title{font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.7px;font-weight:500}
+.timeline-meta{font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px}
+.timeline-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.timeline-track::before{content:'';position:absolute;left:9px;right:9px;top:8px;height:2px;background:var(--border);z-index:0}
+.timeline-track::after{content:'';position:absolute;left:9px;top:8px;height:2px;width:10%;background:var(--accent);z-index:1}
+.ts{position:relative;z-index:2;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ts-dot{width:18px;height:18px;border-radius:50%;background:var(--surface);border:2px solid var(--border-strong)}
+.ts.now .ts-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 6px var(--accent-soft)}
+.ts-date{font-family:'Geist Mono',monospace;font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+.ts.now .ts-date{color:var(--accent)}
+.ts-what{font-size:13px;color:var(--text-primary);line-height:1.4;font-weight:500}
+.ts-sub{font-size:12px;color:var(--text-secondary);line-height:1.45}
+
+/* ============ FLAG CARDS ============ */
+.flags{display:grid;gap:12px;margin-top:20px}
+.flag{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 22px;box-shadow:var(--shadow-sm)}
+.flag .f-tag{display:inline-block;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;padding:3px 8px 2px;border-radius:4px;margin-bottom:10px}
+.flag .f-tag.reg{background:var(--accent-soft);color:var(--accent-deep);border:1px solid var(--accent-mid)}
+.flag .f-tag.est{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber-mid)}
+.flag .f-body{font-size:13px;color:var(--text-secondary);line-height:1.6;max-width:840px}
+.flag .f-body strong{color:var(--text-primary);font-weight:600}
+
+/* ============ SOURCES ============ */
+.sources{display:grid;gap:0;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:12px;overflow:hidden}
+.src{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:18px 22px;border-bottom:1px solid var(--border-subtle)}
+.src:last-child{border-bottom:none}
+.src .s-num{font-family:'Geist Mono',monospace;font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.5px;padding-top:2px}
+.src .s-claim{font-size:13px;font-weight:600;color:var(--text-primary);line-height:1.45;margin-bottom:5px;letter-spacing:-.005em}
+.src .s-cite{font-size:12px;color:var(--text-tertiary);line-height:1.6}
+.src .s-cite em{font-style:italic;color:var(--text-secondary)}
+.src .s-cite a{font-family:'Geist Mono',monospace;font-size:11px}
+
+/* ============ FOOTER ============ */
+.foot{
+  margin-top:36px;padding-top:18px;border-top:1px solid var(--border-subtle);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:'Geist Mono',monospace;font-size:10px;color:var(--text-tertiary);
+  text-transform:uppercase;letter-spacing:.5px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media screen and (max-width:880px){
+  body{padding:0 20px 40px}
+  .hero{padding:36px 0 28px}
+  .hero h1{font-size:30px}
+  .hero-meta{grid-template-columns:1fr;gap:14px}
+  .figures,.grand{grid-template-columns:1fr 1fr}
+  .fig-cell,.grand .cell{border-right:none;border-bottom:1px solid var(--border-subtle)}
+  .grand .cell{border-bottom:1px solid rgba(255,255,255,.09)}
+  .figures .fig-cell:nth-child(odd),.grand .cell:nth-child(odd){border-right:1px solid var(--border-subtle)}
+  .grand .cell:nth-child(odd){border-right:1px solid rgba(255,255,255,.09)}
+  .role-grid{grid-template-columns:1fr}
+  .diagram{padding:20px 18px 16px}
+  .timeline{padding:22px 20px 24px}
+  .timeline-track{grid-template-columns:1fr;gap:18px}
+  .timeline-track::before,.timeline-track::after{display:none}
+  .ts{flex-direction:row;align-items:flex-start;gap:14px;flex-wrap:wrap}
+  .ts-dot{flex:none;margin-top:2px}
+  .timeline-head{flex-direction:column;gap:6px}
+  thead th,tbody td{padding-left:14px;padding-right:14px}
+  /* nowrap chips would otherwise force the decision cards past the viewport */
+  .chip{white-space:normal;overflow-wrap:anywhere}
+  .decision{padding:18px 18px}
+  .diagram-head,.fig-legend{flex-direction:column;align-items:flex-start;gap:8px}
+  .svg-scroll svg{min-width:620px}
+}
+@media screen and (max-width:660px){
+  .scroll-hint{display:block}
+}
+@media screen and (max-width:560px){
+  .figures,.grand{grid-template-columns:1fr}
+  .figures .fig-cell,.grand .cell{border-right:none !important}
+}
+
+/* ============ PRINT / PDF ============
+   Faithful PDF: render the real desktop layout and zoom it onto A4, rather
+   than shipping a separate, shrunk print design.
+   zoom ≈ A4 content width (~703px @ 12mm margins) ÷ design width (1000px). */
+@media print{
+  html{zoom:0.70}
+  body{padding:0}
+  .page{max-width:none;width:100%;margin:0;padding:0}
+  *{box-shadow:none !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html,body{background:#fff}
+  .hero::before{display:none}  /* decorative glow renders as a dark halo in PDF */
+  .svg-scroll{overflow:visible}
+  .svg-scroll svg{min-width:0}
+  .scroll-hint{display:none}
+  .diagram,.figures,.grand,.role-card,.decision,.flag,.timeline,.tbl-wrap,.src,.costbar,.note{break-inside:avoid;page-break-inside:avoid}
+  /* a lead paragraph split mid-sentence across pages reads as a defect */
+  .section-lead,.figcap,p.body,.role-grid{break-inside:avoid;page-break-inside:avoid}
+  .section-head,.section-lead,h1,h2,.tbl-label{break-after:avoid;page-break-after:avoid}
+  /* tighter vertical rhythm in print so tall unbreakable blocks (the Fig. 1 card)
+     fit on the page they belong to instead of pushing over and leaving a gap */
+  .hero{padding:34px 0 26px}
+  section.block{padding:30px 0}
+  .diagram{margin:20px 0 10px;padding:18px 20px 16px}
+  .tbl-label{margin:18px 0 8px}
+  .decisions{gap:10px}
+  /* keep the footer on the last content page instead of orphaning a page for it */
+  section.block:last-of-type{padding-bottom:10px}
+  .foot{margin-top:14px;padding-top:10px;break-before:avoid;page-break-before:avoid}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ TOP BAR ============ -->
+  <div class="topbar">
+    <div class="brand"><span class="brand-mark">In</span><span>Insai</span></div>
+    <span>Feasibility proposal · v1 · August 2026</span>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Research collaboration proposal</div>
+      <h1>Home EEG sleep monitoring <span class="accent">before and during pharmacological treatment.</span></h1>
+      <p class="hero-sub">A feasibility study in a psychiatric outpatient cohort. Study assumptions on top, the budget they produce underneath, and the decisions that would change it at the bottom.</p>
+      <div class="hero-meta">
+        <div class="item"><div class="label">Prepared for</div><div class="value">Tejs Jansen, MD PhD</div></div>
+        <div class="item"><div class="label">From</div><div class="value">Mark Yousef · Insai ApS</div></div>
+        <div class="item"><div class="label">Study site</div><div class="value">To be confirmed</div></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="costbar">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+    <span class="txt"><strong>At-cost budget for a grant application.</strong> Every hour and every component is itemized at Insai's internal cost. This is not Insai's commercial rate card and should not be read as one.</span>
+  </div>
+
+  <!-- ============ 01 · THE ASSUMED STUDY ============ -->
+  <section class="block">
+    <div class="section-head"><span class="section-num">01</span><h2>The assumed study — what the costs reason from</h2></div>
+    <p class="section-lead">A psychiatric clinic monitors 10 patients at home with the Nexus EEG headband before medication start and again on stable medication. The question is feasibility: <strong>can multi-night home EEG capture sleep markers relevant to treatment response in this population?</strong></p>
+
+    <div class="figures">
+      <div class="fig-cell"><div class="k">Patients</div><div class="v">10</div><div class="u">Two sequential cohorts of five</div></div>
+      <div class="fig-cell"><div class="k">Recording nights</div><div class="v">100–140</div><div class="u">5–7 per patient, per window</div></div>
+      <div class="fig-cell"><div class="k">Study duration</div><div class="v">4–5</div><div class="u">Months of active recording</div></div>
+      <div class="fig-cell"><div class="k">Research kits</div><div class="v">5</div><div class="u">Rotated between cohorts</div></div>
+    </div>
+
+    <p class="body">The scientific rationale rests on three grounded observations. First, nearly all antidepressants suppress REM sleep — a robust, objectively measurable class effect (Riemann et al. 2019; Mayers &amp; Baldwin 2005). Second, whether baseline sleep disturbance predicts treatment response is genuinely unresolved: findings are mixed (e.g. CO-MED, n=665, found no predictive value of self-reported insomnia), and nearly all existing evidence rests on self-report rather than objective EEG. Third, outcome is conventionally assessed 4–8 weeks after treatment start, and change within the first 2 weeks predicts stable response with high sensitivity (Szegedi et al. 2009, n=6,562).</p>
+    <p class="body">Multi-night home EEG addresses exactly the evidence gap: <strong>objective sleep measurement, at home, before and during treatment.</strong> The specific drug class is a protocol decision.</p>
+
+    <!-- ---- Fig. 1: cohort Gantt ---- -->
+    <div class="diagram">
+      <div class="diagram-head">
+        <span class="diagram-title">Fig. 1 · Draft study design</span>
+        <span class="diagram-meta">2 × 5 sequential · ~7 weeks per patient</span>
+      </div>
+
+      <div class="fig-legend">
+        <span class="leg"><span class="sw base"></span>Baseline recording · 5–7 nights</span>
+        <span class="leg"><span class="sw treat"></span>Treatment · standard care, no recording</span>
+        <span class="leg"><span class="sw post"></span>Post recording · 5–7 nights</span>
+      </div>
+
+      <div class="svg-scroll">
+      <svg viewBox="0 0 860 232" role="img" aria-label="Study timeline: two sequential cohorts of five patients. Each patient has a baseline recording week, a treatment period of roughly five weeks, and a post-treatment recording week. Cohort 1 runs from month 0 to month 2; the five kits are then reshipped and cohort 2 runs from month 2 to month 4.">
+        <defs>
+          <marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5.5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 z" fill="#8C98A4"/>
+          </marker>
+        </defs>
+
+        <!-- month grid -->
+        <g stroke="#EAEEF1" stroke-width="1">
+          <line x1="140" y1="34" x2="140" y2="196"/>
+          <line x1="284" y1="34" x2="284" y2="196"/>
+          <line x1="428" y1="34" x2="428" y2="196"/>
+          <line x1="572" y1="34" x2="572" y2="196"/>
+          <line x1="716" y1="34" x2="716" y2="196"/>
+          <line x1="856" y1="34" x2="856" y2="196"/>
+        </g>
+        <g font-family="Geist Mono, monospace" font-size="11" fill="#8C98A4" letter-spacing="0.5">
+          <text x="140" y="218">MONTH 0</text>
+          <text x="284" y="218">MONTH 1</text>
+          <text x="428" y="218">MONTH 2</text>
+          <text x="572" y="218">MONTH 3</text>
+          <text x="716" y="218">MONTH 4</text>
+        </g>
+
+        <!-- cohort 1 -->
+        <g font-family="Geist, sans-serif">
+          <text x="0" y="72" font-size="13" font-weight="600" fill="#0B1220">Cohort 1</text>
+          <text x="0" y="89" font-size="12" fill="#8C98A4">Patients 1–5</text>
+        </g>
+        <rect x="140" y="58" width="36" height="34" rx="5" fill="#0D9488"/>
+        <rect x="180" y="58" width="176" height="34" rx="5" fill="#F1F5F9" stroke="#C6D0D8" stroke-width="1"/>
+        <rect x="360" y="58" width="36" height="34" rx="5" fill="#064E48"/>
+
+        <!-- kit rotation -->
+        <path d="M 400 96 C 432 122, 448 132, 472 145" stroke="#8C98A4" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+        <g font-family="Geist Mono, monospace" font-size="11" fill="#8C98A4">
+          <text x="494" y="116">5 KITS RESHIPPED</text>
+          <text x="494" y="132">NEW HEADBAND PER PATIENT</text>
+        </g>
+
+        <!-- cohort 2 -->
+        <g font-family="Geist, sans-serif">
+          <text x="0" y="162" font-size="13" font-weight="600" fill="#0B1220">Cohort 2</text>
+          <text x="0" y="179" font-size="12" fill="#8C98A4">Patients 6–10</text>
+        </g>
+        <rect x="482" y="148" width="36" height="34" rx="5" fill="#0D9488"/>
+        <rect x="522" y="148" width="176" height="34" rx="5" fill="#F1F5F9" stroke="#C6D0D8" stroke-width="1"/>
+        <rect x="702" y="148" width="36" height="34" rx="5" fill="#064E48"/>
+      </svg>
+      </div>
+      <div class="scroll-hint">Scroll the diagram sideways to read it →</div>
+
+      <div class="figcap"><strong>Draft design: 2 × 5 sequential cohorts.</strong> Each patient spans ~7 weeks — a baseline recording week, then treatment as standard care, then a post recording week placed inside the conventional 4–8 week outcome-assessment window. Exact timing is a protocol decision. Five kits serve cohort 1, are reshipped, and serve cohort 2. Each patient receives a new headband; recorders and phones are cleaned and rotated.</div>
+    </div>
+
+    <div class="note"><strong>What the timeline drives.</strong> The ~4–5 study months set the SIM subscriptions and the monitoring window; the 2 × 5 structure sets the kit count. It assumes each cohort's patients start within the same ~2 weeks — rolling recruitment stretches calendar time, which is cheap, but should be flagged in the protocol.</div>
+  </section>
+
+  <!-- ============ 02 · ROLES ============ -->
+  <section class="block">
+    <div class="section-head"><span class="section-num">02</span><h2>Who delivers what</h2></div>
+    <p class="section-lead">Three parties, scoped so the clinical and regulatory work stays with the clinic and Tejs, and the measurement layer stays with Insai.</p>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M12 9v6"/><path d="M9 12h6"/></svg></div>
+        <div class="name">Clinic</div>
+        <div class="desc">Principal investigator, patient recruitment, clinical assessments, and treatment delivered as standard care.</div>
+      </div>
+      <div class="role-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg></div>
+        <div class="name">Tejs</div>
+        <div class="desc">Protocol, ethics submission to VEK, and the grant budget and application.</div>
+      </div>
+      <div class="role-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+        <div class="name">Insai</div>
+        <div class="desc">Research kits, data platform, monitoring and support, automated and scientific analysis, and the study report.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 · BUDGET ============ -->
+  <section class="block">
+    <div class="section-head"><span class="section-num">03</span><h2>What the assumed study costs</h2></div>
+    <p class="section-lead">Insai's part only, ex VAT. Hardware is passed through at cost with invoices; services are itemized hours at the internal cost rate.</p>
+
+    <div class="tbl-label">Hardware — 5 research kits, at cost, passed through with invoices</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th class="num">DKK</th></tr></thead>
+        <tbody>
+          <tr><td>5 EEG recorders <span class="qual">· 2,500 / unit</span></td><td class="num">12,500</td></tr>
+          <tr><td>15 textile headbands <span class="qual">· 500 / unit — one new per patient plus 5 spares</span></td><td class="num">7,500</td></tr>
+          <tr><td>5 smartphones <span class="qual">· 1,300 / unit</span></td><td class="num">6,500</td></tr>
+          <tr><td>5 data SIMs <span class="qual">· 30 / month × 5 study months</span></td><td class="num">750</td></tr>
+          <tr><td>Chargers, cables, cases, packaging <span class="qual">· estimate</span></td><td class="num">1,500</td></tr>
+          <tr><td>Kit logistics <span class="qual">· recorder turnaround and shipping between patients — estimate</span></td><td class="num">2,000</td></tr>
+          <tr class="subtotal"><td>Hardware subtotal</td><td class="num">30,750</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tbl-label">Services — 240 hours at the 750 DKK/h internal cost rate</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th class="num">Hours</th><th class="num">DKK</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Study setup</strong> — portal configuration, kit provisioning, clinic training, patient instruction materials, data agreements</td><td class="num">60</td><td class="num">45,000</td></tr>
+          <tr><td><strong>Monitoring &amp; support</strong> — remote data QC and patient support during wear windows (10 patients × 2 windows)</td><td class="num">50</td><td class="num">37,500</td></tr>
+          <tr><td><strong>Automated analysis &amp; feasibility report</strong> — staging and sleep metrics run on the platform (machine time, not labour); the hours cover QC and writing the report: adherence, usable epochs, signal quality, baseline versus on-treatment trends</td><td class="num">40</td><td class="num">30,000</td></tr>
+          <tr><td><strong>Scientific analysis toward publication</strong> — sleep-architecture endpoints, statistical analysis, manuscript contribution</td><td class="num">50</td><td class="num">37,500</td></tr>
+          <tr><td><strong>Project coordination</strong></td><td class="num">40</td><td class="num">30,000</td></tr>
+          <tr class="subtotal"><td>Services subtotal</td><td class="num">240</td><td class="num">180,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grand">
+      <div class="cell"><div class="lbl">Hardware</div><div class="val">30,750<span class="cur">DKK</span></div></div>
+      <div class="cell"><div class="lbl">Services</div><div class="val">180,000<span class="cur">DKK</span></div></div>
+      <div class="cell"><div class="lbl">Total, ex VAT</div><div class="val">210,750<span class="cur">DKK</span></div></div>
+      <div class="cell hi"><div class="lbl">Grant line incl. contingency</div><div class="val">220,000<span class="cur">DKK</span></div></div>
+    </div>
+
+    <div class="note"><strong>Hours are assumptions pending the final protocol.</strong> Monitoring scales with the wear windows, scientific analysis with the endpoint list. They will be trued up once the protocol is fixed. The structure is protocol-robust: hardware, setup and the automated pipeline are fixed costs, and the platform's marginal cost per recorded night is low. Design the protocol for the science, not the budget.</div>
+
+    <div class="note accent"><strong>Co-authorship.</strong> As the scientific analysis is delivered at cost, Insai's contributing scientists are co-authors on the resulting publication.</div>
+  </section>
+
+  <!-- ============ 04 · DECISIONS ============ -->
+  <section class="block">
+    <div class="section-head"><span class="section-num">04</span><h2>What would change the budget — and what wouldn't</h2></div>
+    <p class="section-lead">Each card shows the assumed choice and the cost of choosing differently. Settle these in the protocol and the budget is final.</p>
+
+    <div class="decisions">
+
+      <div class="decision">
+        <div class="d-head"><span class="d-num">D1</span><span class="d-title">Sequential or parallel cohorts?</span></div>
+        <div class="d-body">Five kits rotating through 2 × 5 keeps hardware minimal. Running all 10 patients at once needs 10 kits and halves the calendar.</div>
+        <div class="chips">
+          <span class="chip assumed">Assumed · sequential 2 × 5</span>
+          <span class="chip delta">Parallel · +20,500 DKK hardware, −2 months</span>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="d-head"><span class="d-num">D2</span><span class="d-title">Measurement during treatment?</span></div>
+        <div class="d-body">The draft records baseline and post only. There is a real scientific case for adding sampling during titration: clinical improvement within the first 2 weeks predicts stable response with ≥81% sensitivity (Szegedi et al. 2009), and REM suppression is the objective drug signature — whether early sleep-EEG change tracks response is exactly the kind of question a feasibility study can open.</div>
+        <div class="chips">
+          <span class="chip assumed">Assumed · baseline + post</span>
+          <span class="chip delta">Weekly sampling wks 1–5 · +~15,000 DKK support</span>
+          <span class="chip delta">Continuous wear · +~20,000 DKK support + spares</span>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="d-head"><span class="d-num">D3</span><span class="d-title">When is the post window?</span></div>
+        <div class="d-body">Week 4, 6 or 8 after treatment start — anywhere inside the conventional 4–8 week outcome-assessment window (Szegedi et al. 2009). Moves calendar time and SIM months slightly; the budget barely notices.</div>
+        <div class="chips">
+          <span class="chip assumed">Assumed · ~week 5–6</span>
+          <span class="chip">Cost impact · negligible</span>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="d-head"><span class="d-num">D4</span><span class="d-title">Analysis depth — standard or bespoke?</span></div>
+        <div class="d-body">Standard is the automated multi-night report with feasibility metrics. Bespoke adds endpoint-level scientific analysis, statistics and manuscript contribution.</div>
+        <div class="chips">
+          <span class="chip assumed">Assumed · bespoke incl. publication</span>
+          <span class="chip delta">Standard only · −37,500 DKK → total 173,250</span>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="d-head"><span class="d-num">D5</span><span class="d-title">Which drug class and clinical anchor?</span></div>
+        <div class="d-body">SSRIs were mentioned but are unconfirmed. The clinical response measure — for example HAM-D or QIDS change — and who scores it defines the endpoint list, which sets the scientific analysis hours.</div>
+        <div class="chips">
+          <span class="chip open">Protocol decision · Tejs &amp; clinic</span>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="d-head"><span class="d-num">D6</span><span class="d-title">Grant: foundation, deadline, ceiling?</span></div>
+        <div class="d-body">Which foundation is targeted, when the deadline falls, and whether there is a ceiling for the technology part. Shapes how the budget is presented, not what it is.</div>
+        <div class="chips">
+          <span class="chip open">Tejs to confirm</span>
+        </div>
+      </div>
+
+      <div class="decision">
+        <div class="d-head"><span class="d-num">D7</span><span class="d-title">Data roles</span></div>
+        <div class="d-body">Assumed: the clinic is data controller and Insai is data processor. A data processing agreement is part of study setup.</div>
+        <div class="chips">
+          <span class="chip assumed">Assumed · clinic controller / Insai processor</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 05 · REGULATORY & TIMING ============ -->
+  <section class="block">
+    <div class="section-head"><span class="section-num">05</span><h2>Regulatory &amp; timing — notes for the submission</h2></div>
+    <p class="section-lead">The path from protocol to first recording, and the three things worth flagging in the submission.</p>
+
+    <div class="timeline">
+      <div class="timeline-head">
+        <span class="timeline-title">Path to first recording</span>
+        <span class="timeline-meta">Indicative sequence · not committed dates</span>
+      </div>
+      <div class="timeline-track">
+        <div class="ts now">
+          <div class="ts-dot"></div>
+          <div class="ts-date">Now</div>
+          <div class="ts-what">Protocol &amp; budget</div>
+          <div class="ts-sub">Tejs drafts the protocol; this document is the technology line in the grant budget.</div>
+        </div>
+        <div class="ts">
+          <div class="ts-dot"></div>
+          <div class="ts-date">Submission</div>
+          <div class="ts-what">VEK application</div>
+          <div class="ts-sub">Filed in the region where the PI holds their main position. The decision is valid nationally.</div>
+        </div>
+        <div class="ts">
+          <div class="ts-dot"></div>
+          <div class="ts-date">+60 days</div>
+          <div class="ts-what">VEK decision</div>
+          <div class="ts-sub">Statutory deadline from a properly formed application. A revision request pauses the clock.</div>
+        </div>
+        <div class="ts">
+          <div class="ts-dot"></div>
+          <div class="ts-date">Q4 2026 earliest</div>
+          <div class="ts-what">Study start</div>
+          <div class="ts-sub">Aligns with the self-certified MDR Class I timeline, planned December 2026.</div>
+        </div>
+        <div class="ts">
+          <div class="ts-dot"></div>
+          <div class="ts-date">+4–5 months</div>
+          <div class="ts-what">Recording complete</div>
+          <div class="ts-sub">Analysis and the feasibility report follow the final recording window.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flags">
+      <div class="flag">
+        <span class="f-tag reg">Device status</span>
+        <div class="f-body">CE-marked (non-medical) today; self-certified MDR Class I planned for December 2026. Used for research measurement only, with <strong>no diagnostic claims</strong> — relevant for the VEK classification, to be confirmed in the submission.</div>
+      </div>
+      <div class="flag">
+        <span class="f-tag reg">Ethics timeline</span>
+        <div class="f-body">Komitéloven sets a <strong>statutory 60-day deadline</strong> for a VEK decision from receipt of a properly formed application; the decision is valid nationally and is submitted in the region where the PI holds their main position. Two caveats: a committee request for revisions pauses the clock, and Region Hovedstaden has a documented history of exceeding the 60-day limit — plan buffer. Realistic study start is therefore Q4 2026 at the earliest, which aligns with the Class I timeline.</div>
+      </div>
+      <div class="flag">
+        <span class="f-tag est">Estimates</span>
+        <div class="f-body">Charger and accessory figures are estimates to be confirmed at purchase. Hardware is passed through at cost with invoices.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 · SOURCES ============ -->
+  <section class="block">
+    <div class="section-head"><span class="section-num">06</span><h2>Sources &amp; assumptions — what each claim rests on</h2></div>
+    <p class="section-lead">Every number in this document is either confirmed, an estimate, or a stated assumption. Every scientific claim is pinned to a source.</p>
+
+    <div class="sources">
+      <div class="src">
+        <div class="s-num">01</div>
+        <div>
+          <div class="s-claim">REM suppression by antidepressants is a robust class effect.</div>
+          <div class="s-cite">Riemann D et al. <em>Sleep, insomnia, and depression.</em> Neuropsychopharmacology 2019;45:74–89 — <a href="https://doi.org/10.1038/s41386-019-0411-y">doi:10.1038/s41386-019-0411-y</a>. Mayers AG &amp; Baldwin DS. <em>Antidepressants and their effect on sleep.</em> Hum Psychopharmacol 2005;20:533–59 (systematic review) — <a href="https://doi.org/10.1002/hup.726">doi:10.1002/hup.726</a>.</div>
+        </div>
+      </div>
+      <div class="src">
+        <div class="s-num">02</div>
+        <div>
+          <div class="s-claim">Baseline sleep as a response predictor — mixed evidence, and the gap this study addresses.</div>
+          <div class="s-cite">Sung SC et al., CO-MED report. J Affect Disord 2015;174:157–64 — n=665; self-reported pre-treatment insomnia did <em>not</em> predict response or remission — <a href="https://doi.org/10.1016/j.jad.2014.11.026">doi:10.1016/j.jad.2014.11.026</a>. Existing prediction evidence rests on self-report; objective multi-night EEG data in this setting is scarce.</div>
+        </div>
+      </div>
+      <div class="src">
+        <div class="s-num">03</div>
+        <div>
+          <div class="s-claim">Outcome-assessment window and early-change prediction.</div>
+          <div class="s-cite">Szegedi A et al. J Clin Psychiatry 2009;70:344–53 — meta-analysis, 41 trials, n=6,562; trials run 4–8 weeks; ≥20% improvement within 2 weeks predicts stable response with ≥81% sensitivity — <a href="https://doi.org/10.4088/jcp.07m03780">doi:10.4088/jcp.07m03780</a>.</div>
+        </div>
+      </div>
+      <div class="src">
+        <div class="s-num">04</div>
+        <div>
+          <div class="s-claim">VEK processing.</div>
+          <div class="s-cite">Komitéloven: decision within 60 days of a properly formed application; nationally valid; submitted in the PI's region. Regional committee guidance recommends submitting at least 60 days before the chosen committee meeting. Region Hovedstaden has publicly documented delays beyond the statutory limit.</div>
+        </div>
+      </div>
+      <div class="src">
+        <div class="s-num">05</div>
+        <div>
+          <div class="s-claim">Costs — what is confirmed and what is estimated.</div>
+          <div class="s-cite">Recorders (2,500 DKK), headbands (500 DKK), phones (1,300 DKK) and SIMs (30 DKK/month) are confirmed internally (Insai / Cebreo, August 2026). Chargers, cases, packaging and kit logistics are estimates to be confirmed at purchase. Service hours are Insai planning assumptions at the 750 DKK/h internal cost rate, to be trued against the final protocol.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <div class="foot">
+    <span>Insai ApS · Grundtvigsvej 6, Frederiksberg C · <a href="mailto:mark@insai.tech">mark@insai.tech</a></span>
+    <span>Proposal v1 · August 2026 · Confidential</span>
+  </div>
+
+</div>
+</body>
+</html>

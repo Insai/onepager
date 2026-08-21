@@ -1,0 +1,7 @@
+.DS_Store
+
+# Internal working material for the Tejs feasibility proposal — handoff spec,
+# v1 markdown and the pre-design HTML all carry Insai's internal cost rate and
+# pricing posture. This repo is public; the published page lives in
+# psychiatry-tejs-7f3a91/ behind an unguessable path + noindex.
+psychiatry/
